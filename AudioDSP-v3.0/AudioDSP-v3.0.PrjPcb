@@ -441,7 +441,7 @@ GenerateClassCluster=0
 DocumentUniqueId=IMQKWUCE
 
 [Document24]
-DocumentPath=DOC\JLCPCB-4Layer.OutJob
+DocumentPath=DOC\job\JLCPCB-4Layer.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
