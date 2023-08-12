@@ -574,14 +574,18 @@ DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - BOM\Bill of Mater
 DItemRevisionGUID=
 
 [GeneratedDocument22]
-DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
+DocumentPath=Project Outputs for AudioDSP-v3.0\AudioDSP-v3.0 - BOM\Bill of Materials-AudioDSP-v3.0(For Assembly).xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument23]
-DocumentPath=Project Outputs for AudioDSP-v3.0\Design Rule Check - AudioDSP-3.html
+DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
 DItemRevisionGUID=
 
 [GeneratedDocument24]
+DocumentPath=Project Outputs for AudioDSP-v3.0\Design Rule Check - AudioDSP-3.html
+DItemRevisionGUID=
+
+[GeneratedDocument25]
 DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - Pick and Place\Pick Place for AudioDSP-2.0(For Assembly).csv
 DItemRevisionGUID=
 
