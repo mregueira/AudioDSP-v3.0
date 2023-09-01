@@ -118,40 +118,6 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document5]
-DocumentPath=SCH\DSP_Block.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=3
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=WETNBKCK
-
-[Document6]
-DocumentPath=SCH\DSP_Block.Harness
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document7]
 DocumentPath=SCH\DAC_Block.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -168,7 +134,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LIHLSZCQ
 
-[Document8]
+[Document6]
 DocumentPath=SCH\DAC_Block.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -185,7 +151,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document9]
+[Document7]
 DocumentPath=SCH\LPF_Block.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -202,7 +168,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SVFDJBYK
 
-[Document10]
+[Document8]
 DocumentPath=SCH\LPF_Block.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -219,7 +185,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document11]
+[Document9]
 DocumentPath=SCH\POW_Block.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -236,7 +202,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JSKAXMRE
 
-[Document12]
+[Document10]
 DocumentPath=AudioDSP-v3.0.Annotation
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -253,7 +219,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document13]
+[Document11]
 DocumentPath=SCH\IN_Connectors.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -270,7 +236,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TKHHDBQP
 
-[Document14]
+[Document12]
 DocumentPath=SCH\IN_Connectors.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -287,7 +253,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document15]
+[Document13]
 DocumentPath=SCH\OUT_Connectors.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -304,7 +270,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HQUQORKC
 
-[Document16]
+[Document14]
 DocumentPath=SCH\OUT_Connectors.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -321,7 +287,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document17]
+[Document15]
 DocumentPath=SCH\MCU_Block.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -338,7 +304,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NETQQERT
 
-[Document18]
+[Document16]
 DocumentPath=SCH\MCU_Block.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -355,7 +321,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document19]
+[Document17]
 DocumentPath=SCH\CTRL_Connectors.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -372,7 +338,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ODNPNUWD
 
-[Document20]
+[Document18]
 DocumentPath=SCH\CTRL_Connectors.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -389,7 +355,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document21]
+[Document19]
 DocumentPath=SCH\ADC_Interface.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -406,7 +372,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AODYSKRJ
 
-[Document22]
+[Document20]
 DocumentPath=SCH\LPF_Interface.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -423,7 +389,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MQWCNVZA
 
-[Document23]
+[Document21]
 DocumentPath=PCB\AudioDSP-3.0.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -440,8 +406,42 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IMQKWUCE
 
+[Document22]
+DocumentPath=DOC\job\JLCPCB-4Layer.OutJob
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document23]
+DocumentPath=SCH\DSP_Block.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=13
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=SKMJPIWA
+
 [Document24]
-DocumentPath=DOC\JLCPCB-4Layer.OutJob
+DocumentPath=SCH\DSP_Block.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -574,10 +574,18 @@ DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - BOM\Bill of Mater
 DItemRevisionGUID=
 
 [GeneratedDocument22]
-DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
+DocumentPath=Project Outputs for AudioDSP-v3.0\AudioDSP-v3.0 - BOM\Bill of Materials-AudioDSP-v3.0(For Assembly).xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument23]
+DocumentPath=Project Outputs for AudioDSP-v2.0\Design Rule Check - AudioDSP-2.html
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for AudioDSP-v3.0\Design Rule Check - AudioDSP-3.html
+DItemRevisionGUID=
+
+[GeneratedDocument25]
 DocumentPath=Project Outputs for AudioDSP-v2.0\AudioDSP-v2.0 - Pick and Place\Pick Place for AudioDSP-2.0(For Assembly).csv
 DItemRevisionGUID=
 
@@ -1549,123 +1557,123 @@ MatchStrictly2=1
 PhysicalNamingFormat=$ComponentPrefix$ComponentIndex_$SheetDesignator
 GlobalIndexSortOrder=3
 GlobalIndexSortLocation=0
-UniqueIDPath0=\YCHEGXES\TPCJARWW
-DocumentName0=ADC_Block.SchDoc
+UniqueIDPath0=\NCABPVHP
+DocumentName0=POW_Block.SchDoc
 IsEnabled0=1
 SelectionScope0=All
-Order0=17
+Order0=12
 IndexEnabled0=0
 IndexStartValue0=1
 Suffix0=
-UniqueIDPath1=\XQUOKVOI
-DocumentName1=OUT_Connectors.SchDoc
+UniqueIDPath1=\YCHEGXES\TPCJARWW
+DocumentName1=ADC_Block.SchDoc
 IsEnabled1=1
-SelectionScope1=Only Selected Parts
-Order1=14
+SelectionScope1=All
+Order1=17
 IndexEnabled1=0
 IndexStartValue1=1
 Suffix1=
-UniqueIDPath2=\TZBTBOVD
-DocumentName2=MCU_Block.SchDoc
+UniqueIDPath2=\VUBOPNGB
+DocumentName2=CTRL_Connectors.SchDoc
 IsEnabled2=1
 SelectionScope2=All
-Order2=16
+Order2=15
 IndexEnabled2=0
 IndexStartValue2=1
 Suffix2=
-UniqueIDPath3=\UFPOOPZB
-DocumentName3=DSP_Block.SchDoc
+UniqueIDPath3=
+DocumentName3=AudioDSP-v3.0_top.SchDoc
 IsEnabled3=1
-SelectionScope3=All
-Order3=7
+SelectionScope3=Only Selected Parts
+Order3=25
 IndexEnabled3=0
 IndexStartValue3=1
 Suffix3=
-UniqueIDPath4=\HMGNDUFP
-DocumentName4=DAC_Block.SchDoc
+UniqueIDPath4=\RLXDRKKR\AYWQNWRG
+DocumentName4=LPF_Block.SchDoc
 IsEnabled4=1
 SelectionScope4=All
-Order4=5
+Order4=22
 IndexEnabled4=0
 IndexStartValue4=1
 Suffix4=
-UniqueIDPath5=\RLXDRKKR\AYWQNWRG
-DocumentName5=LPF_Block.SchDoc
+UniqueIDPath5=\RLXDRKKR
+DocumentName5=LPF_Interface.SchDoc
 IsEnabled5=1
 SelectionScope5=All
-Order5=22
+Order5=24
 IndexEnabled5=0
 IndexStartValue5=1
 Suffix5=
-UniqueIDPath6=\FDNUDNTD
-DocumentName6=IN_Connectors.SchDoc
+UniqueIDPath6=\RLXDRKKR\RFMLTSND
+DocumentName6=LPF_Block.SchDoc
 IsEnabled6=1
-SelectionScope6=Only Selected Parts
-Order6=13
+SelectionScope6=All
+Order6=21
 IndexEnabled6=0
 IndexStartValue6=1
 Suffix6=
-UniqueIDPath7=\VUBOPNGB
-DocumentName7=CTRL_Connectors.SchDoc
+UniqueIDPath7=\XQUOKVOI
+DocumentName7=OUT_Connectors.SchDoc
 IsEnabled7=1
-SelectionScope7=All
-Order7=15
+SelectionScope7=Only Selected Parts
+Order7=14
 IndexEnabled7=0
 IndexStartValue7=1
 Suffix7=
-UniqueIDPath8=\PRHUKTFQ
-DocumentName8=DSP_Block.SchDoc
+UniqueIDPath8=\FDNUDNTD
+DocumentName8=IN_Connectors.SchDoc
 IsEnabled8=1
-SelectionScope8=All
-Order8=6
+SelectionScope8=Only Selected Parts
+Order8=13
 IndexEnabled8=0
 IndexStartValue8=1
 Suffix8=
-UniqueIDPath9=\RLXDRKKR\GIWPXOPM
-DocumentName9=LPF_Block.SchDoc
+UniqueIDPath9=\YCHEGXES\DELZRULB
+DocumentName9=ADC_Block.SchDoc
 IsEnabled9=1
 SelectionScope9=All
-Order9=23
+Order9=19
 IndexEnabled9=0
 IndexStartValue9=1
 Suffix9=
-UniqueIDPath10=\YCHEGXES\TQGJTSUV
-DocumentName10=ADC_Block.SchDoc
+UniqueIDPath10=\RLXDRKKR\GIWPXOPM
+DocumentName10=LPF_Block.SchDoc
 IsEnabled10=1
 SelectionScope10=All
-Order10=18
+Order10=23
 IndexEnabled10=0
 IndexStartValue10=1
 Suffix10=
-UniqueIDPath11=\YCHEGXES
-DocumentName11=ADC_Interface.SchDoc
+UniqueIDPath11=\TZBTBOVD
+DocumentName11=MCU_Block.SchDoc
 IsEnabled11=1
 SelectionScope11=All
-Order11=20
+Order11=16
 IndexEnabled11=0
 IndexStartValue11=1
 Suffix11=
-UniqueIDPath12=
-DocumentName12=AudioDSP-v2.0_top.SchDoc
+UniqueIDPath12=\HMGNDUFP
+DocumentName12=DAC_Block.SchDoc
 IsEnabled12=1
-SelectionScope12=Only Selected Parts
-Order12=4
+SelectionScope12=All
+Order12=5
 IndexEnabled12=0
 IndexStartValue12=1
 Suffix12=
-UniqueIDPath13=\RLXDRKKR
-DocumentName13=LPF_Interface.SchDoc
+UniqueIDPath13=\YCHEGXES\TQGJTSUV
+DocumentName13=ADC_Block.SchDoc
 IsEnabled13=1
 SelectionScope13=All
-Order13=24
+Order13=18
 IndexEnabled13=0
 IndexStartValue13=1
 Suffix13=
-UniqueIDPath14=\RLXDRKKR\RFMLTSND
-DocumentName14=LPF_Block.SchDoc
+UniqueIDPath14=\NDBOBEGM
+DocumentName14=DSP_Block.SchDoc
 IsEnabled14=1
 SelectionScope14=All
-Order14=21
+Order14=26
 IndexEnabled14=0
 IndexStartValue14=1
 Suffix14=
@@ -1677,22 +1685,14 @@ Order15=11
 IndexEnabled15=0
 IndexStartValue15=1
 Suffix15=
-UniqueIDPath16=\YCHEGXES\DELZRULB
-DocumentName16=ADC_Block.SchDoc
+UniqueIDPath16=\YCHEGXES
+DocumentName16=ADC_Interface.SchDoc
 IsEnabled16=1
 SelectionScope16=All
-Order16=19
+Order16=20
 IndexEnabled16=0
 IndexStartValue16=1
 Suffix16=
-UniqueIDPath17=\NCABPVHP
-DocumentName17=POW_Block.SchDoc
-IsEnabled17=1
-SelectionScope17=All
-Order17=12
-IndexEnabled17=0
-IndexStartValue17=1
-Suffix17=
 
 [PrjClassGen]
 CompClassManualEnabled=1

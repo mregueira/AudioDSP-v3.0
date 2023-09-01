@@ -17,7 +17,7 @@ RevisionNamingSchemeGUID=
 [OutputGroup1]
 Name=JLCPCB-4Layer.OutJob
 Description=
-TargetOutputMedium=BOM
+TargetOutputMedium=Gerber Files
 VariantName=[No Variations]
 VariantScope=0
 CurrentConfigurationName=
@@ -38,20 +38,20 @@ OutputName1=Gerber Files
 OutputCategory1=Fabrication
 OutputDocumentPath1=
 OutputVariantName1=
-OutputEnabled1=0
+OutputEnabled1=1
 OutputEnabled1_OutputMedium1=0
 OutputEnabled1_OutputMedium2=1
 OutputEnabled1_OutputMedium3=0
 OutputEnabled1_OutputMedium4=0
 OutputDefault1=0
 Configuration1_Name1=OutputConfigurationParameter1
-Configuration1_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16908289~1|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Imperial|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=True|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=5|NumberOfDecimals=5|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16973830~1,16973834~1,16777217~1,16777218~1,16777219~1,16842751~1,16973835~1,16973831~1,16908289~1,16908292~1,16908293~1,16908296~1,16908300~1,16973837~1|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=True|Sorted=False|Sorted=False|DocumentPath=C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-v2.0\AudioDSP-v2.0\PCB\AudioDSP-2.0.PcbDoc
+Configuration1_Item1=AddLayersToGroup.Group_0=0|AddLayersToGroup.Group_1=1|AddLayersToGroup.Group_2=2|AddLayersToGroup.Group_3=3|AddLayersToGroup.Group_4=4|AddLayersToGroup.Group_5=5|AddLayersToGroup.Group_6=7|AddLayersToGroup.Group_7=8|AddLayersToGroup.Set_0=16908289|AddLayersToGroup.Set_1=16908289|AddLayersToGroup.Set_2=16908289|AddLayersToGroup.Set_3=16908289|AddLayersToGroup.Set_4=16908289|AddLayersToGroup.Set_5=16908289|AddLayersToGroup.Set_6=16908289|AddLayersToGroup.Set_7=16908289|AddLayersToGroups.Count=8|AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16908289~1|BoardID=IMQKWUCE|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Imperial|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=True|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=5|NumberOfDecimals=5|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|OutputFormat=Different|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16973830~1,16973834~1,16777217~1,16777218~1,16777219~1,16842751~1,16973835~1,16973831~1,16908289~1,16973837~1|PlotBoardProfile=False|PlotBoardProfileFileName= |PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=True|Sorted=False|Sorted=False|UncheckPlotDrillDrawingLayerPair0_Backdrill=False|UncheckPlotDrillDrawingLayerPair0_Checked=False|UncheckPlotDrillDrawingLayerPair0_DrillType=Regular|UncheckPlotDrillDrawingLayerPair0_FileName= |UncheckPlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillDrawingLayerPair0_LowLayer=Top Layer|UncheckPlotDrillGuideLayerPair0_Backdrill=False|UncheckPlotDrillGuideLayerPair0_Checked=False|UncheckPlotDrillGuideLayerPair0_DrillType=Regular|UncheckPlotDrillGuideLayerPair0_FileName= |UncheckPlotDrillGuideLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillGuideLayerPair0_LowLayer=Top Layer|DocumentPath=C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\PCB\AudioDSP-3.0.PcbDoc
 OutputType2=NC Drill
 OutputName2=NC Drill Files
 OutputCategory2=Fabrication
 OutputDocumentPath2=
 OutputVariantName2=
-OutputEnabled2=0
+OutputEnabled2=1
 OutputEnabled2_OutputMedium1=0
 OutputEnabled2_OutputMedium2=2
 OutputEnabled2_OutputMedium3=0
@@ -77,7 +77,7 @@ OutputName4=Bill of Materials
 OutputCategory4=Report
 OutputDocumentPath4=
 OutputVariantName4=For Assembly
-OutputEnabled4=1
+OutputEnabled4=0
 OutputEnabled4_OutputMedium1=0
 OutputEnabled4_OutputMedium2=0
 OutputEnabled4_OutputMedium3=0
@@ -100,7 +100,7 @@ Configuration4_Item6=Comment=120|JLCPart=100|Designator=120|Footprint=120|Quanti
 [PublishSettings]
 OutputFilePath2=C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-Prototype\AudioDSP-1.0\Project Outputs for AudioDSP-1.0\AudioDSP-1.0\
 ReleaseManaged2=1
-OutputBasePath2=Project Outputs for AudioDSP-v2.0
+OutputBasePath2=Project Outputs for AudioDSP-v3.0
 OutputPathMedia2==ProjectName
 OutputPathMediaValue2==ProjectName
 OutputPathOutputer2=
@@ -113,7 +113,7 @@ OutputFileNameSpecial2=
 OpenOutput2=0
 OutputFilePath3=C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-Prototype\AudioDSP-1.0\Project Outputs for AudioDSP-1.0\AudioDSP-1.0 - Pick and Place\
 ReleaseManaged3=1
-OutputBasePath3=Project Outputs for AudioDSP-v2.0
+OutputBasePath3=Project Outputs for AudioDSP-v3.0
 OutputPathMedia3==ProjectName+' - Pick and Place'
 OutputPathMediaValue3==ProjectName+' - Pick and Place'
 OutputPathOutputer3=
@@ -126,7 +126,7 @@ OutputFileNameSpecial3=
 OpenOutput3=0
 OutputFilePath4=C:\Users\Marcelo\Desktop\audioDSP\AudioDSP-v2.0\AudioDSP-v2.0\Project Outputs for AudioDSP-v2.0\
 ReleaseManaged4=1
-OutputBasePath4=Project Outputs for AudioDSP-v2.0
+OutputBasePath4=Project Outputs for AudioDSP-v3.0
 OutputPathMedia4=
 OutputPathMediaValue4=
 OutputPathOutputer4=[Output Custom]
