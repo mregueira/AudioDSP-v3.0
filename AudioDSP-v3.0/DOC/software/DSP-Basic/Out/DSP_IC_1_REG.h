@@ -1,7 +1,7 @@
 /*
- * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\DSP\Out\DSP_IC_1_REG.h
+ * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\DSP-Basic\Out\DSP_IC_1_REG.h
  *
- * Created:        Sunday, August 20, 2023 9:01:12 PM
+ * Created:        Saturday, September 16, 2023 6:14:42 PM
  * Description:    DSP:IC 1 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,
@@ -78,12 +78,12 @@
 /* CLK_GEN3_M  - Registers (IC 1) */
 #define REG_CLK_GEN3_M_IC_1_ADDR                  0xF024
 #define REG_CLK_GEN3_M_IC_1_BYTE                  2
-#define REG_CLK_GEN3_M_IC_1_VALUE                 0x0
+#define REG_CLK_GEN3_M_IC_1_VALUE                 0x1
 
 /* CLK_GEN3_N  - Registers (IC 1) */
 #define REG_CLK_GEN3_N_IC_1_ADDR                  0xF025
 #define REG_CLK_GEN3_N_IC_1_BYTE                  2
-#define REG_CLK_GEN3_N_IC_1_VALUE                 0x0
+#define REG_CLK_GEN3_N_IC_1_VALUE                 0x1
 
 /* CLK_GEN3_SRC  - Registers (IC 1) */
 #define REG_CLK_GEN3_SRC_IC_1_ADDR                0xF026
@@ -313,7 +313,7 @@
 /* SERIAL_BYTE_0_0  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_0_0_IC_1_ADDR             0xF200
 #define REG_SERIAL_BYTE_0_0_IC_1_BYTE             2
-#define REG_SERIAL_BYTE_0_0_IC_1_VALUE            0x0
+#define REG_SERIAL_BYTE_0_0_IC_1_VALUE            0x9000
 
 /* SERIAL_BYTE_0_1  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_0_1_IC_1_ADDR             0xF201
@@ -1243,7 +1243,7 @@
 /* MP4_MODE  - Registers (IC 1) */
 #define REG_MP4_MODE_IC_1_ADDR                    0xF514
 #define REG_MP4_MODE_IC_1_BYTE                    2
-#define REG_MP4_MODE_IC_1_VALUE                   0x0
+#define REG_MP4_MODE_IC_1_VALUE                   0x6
 
 /* MP5_MODE  - Registers (IC 1) */
 #define REG_MP5_MODE_IC_1_ADDR                    0xF515
@@ -1253,7 +1253,7 @@
 /* MP6_MODE  - Registers (IC 1) */
 #define REG_MP6_MODE_IC_1_ADDR                    0xF516
 #define REG_MP6_MODE_IC_1_BYTE                    2
-#define REG_MP6_MODE_IC_1_VALUE                   0x0
+#define REG_MP6_MODE_IC_1_VALUE                   0x7
 
 /* MP7_MODE  - Registers (IC 1) */
 #define REG_MP7_MODE_IC_1_ADDR                    0xF517
@@ -1273,7 +1273,7 @@
 /* MP10_MODE  - Registers (IC 1) */
 #define REG_MP10_MODE_IC_1_ADDR                   0xF51A
 #define REG_MP10_MODE_IC_1_BYTE                   2
-#define REG_MP10_MODE_IC_1_VALUE                  0x0
+#define REG_MP10_MODE_IC_1_VALUE                  0x2
 
 /* MP11_MODE  - Registers (IC 1) */
 #define REG_MP11_MODE_IC_1_ADDR                   0xF51B
@@ -2588,7 +2588,7 @@
 /* LRCLK_IN2_PIN  - Registers (IC 1) */
 #define REG_LRCLK_IN2_PIN_IC_1_ADDR               0xF78A
 #define REG_LRCLK_IN2_PIN_IC_1_BYTE               2
-#define REG_LRCLK_IN2_PIN_IC_1_VALUE              0x18
+#define REG_LRCLK_IN2_PIN_IC_1_VALUE              0x19
 
 /* LRCLK_IN3_PIN  - Registers (IC 1) */
 #define REG_LRCLK_IN3_PIN_IC_1_ADDR               0xF78B
@@ -2673,12 +2673,12 @@
 /* SS_PIN  - Registers (IC 1) */
 #define REG_SS_PIN_IC_1_ADDR                      0xF79B
 #define REG_SS_PIN_IC_1_BYTE                      2
-#define REG_SS_PIN_IC_1_VALUE                     0x18
+#define REG_SS_PIN_IC_1_VALUE                     0x8
 
 /* MOSI_ADDR1_PIN  - Registers (IC 1) */
 #define REG_MOSI_ADDR1_PIN_IC_1_ADDR              0xF79C
 #define REG_MOSI_ADDR1_PIN_IC_1_BYTE              2
-#define REG_MOSI_ADDR1_PIN_IC_1_VALUE             0x18
+#define REG_MOSI_ADDR1_PIN_IC_1_VALUE             0x8
 
 /* SCLK_SCL_M_PIN  - Registers (IC 1) */
 #define REG_SCLK_SCL_M_PIN_IC_1_ADDR              0xF79D
@@ -2786,12 +2786,12 @@
 #define R10_CLK_GEN2_N_CLOCKGEN2_N_IC_1_SHIFT     0
 
 /* CLK_GEN3_M (IC 1) */
-#define R11_CLK_GEN3_M_CLOCKGEN3_M_IC_1           0x0000 /* 0000000000000000b	[15:0] */
+#define R11_CLK_GEN3_M_CLOCKGEN3_M_IC_1           0x0001 /* 0000000000000001b	[15:0] */
 #define R11_CLK_GEN3_M_CLOCKGEN3_M_IC_1_MASK      0xFFFF
 #define R11_CLK_GEN3_M_CLOCKGEN3_M_IC_1_SHIFT     0
 
 /* CLK_GEN3_N (IC 1) */
-#define R12_CLK_GEN3_N_CLOCKGEN3_N_IC_1           0x0000 /* 0000000000000000b	[15:0] */
+#define R12_CLK_GEN3_N_CLOCKGEN3_N_IC_1           0x0001 /* 0000000000000001b	[15:0] */
 #define R12_CLK_GEN3_N_CLOCKGEN3_N_IC_1_MASK      0xFFFF
 #define R12_CLK_GEN3_N_CLOCKGEN3_N_IC_1_SHIFT     0
 
@@ -3174,8 +3174,8 @@
 #define R58_SERIAL_BYTE_0_0_BCLK_POL_IC_1         0x0    /* 0b	[7] */
 #define R58_SERIAL_BYTE_0_0_LRCLK_POL_IC_1        0x0    /* 0b	[8] */
 #define R58_SERIAL_BYTE_0_0_LRCLK_MODE_IC_1       0x0    /* 0b	[9] */
-#define R58_SERIAL_BYTE_0_0_BCLK_SRC_IC_1         0x0    /* 000b	[12:10] */
-#define R58_SERIAL_BYTE_0_0_LRCLK_SRC_IC_1        0x0    /* 000b	[15:13] */
+#define R58_SERIAL_BYTE_0_0_BCLK_SRC_IC_1         0x4    /* 100b	[12:10] */
+#define R58_SERIAL_BYTE_0_0_LRCLK_SRC_IC_1        0x4    /* 100b	[15:13] */
 #define R58_SERIAL_BYTE_0_0_TDM_MODE_IC_1_MASK    0x7
 #define R58_SERIAL_BYTE_0_0_TDM_MODE_IC_1_SHIFT   0
 #define R58_SERIAL_BYTE_0_0_DATA_FMT_IC_1_MASK    0x18
@@ -5965,7 +5965,7 @@
 
 /* MP4_MODE (IC 1) */
 #define R244_MP4_MODE_MP_ENABLE_IC_1              0x0    /* 0b	[0] */
-#define R244_MP4_MODE_MP_MODE_IC_1                0x0    /* 000b	[3:1] */
+#define R244_MP4_MODE_MP_MODE_IC_1                0x3    /* 011b	[3:1] */
 #define R244_MP4_MODE_DEBOUNCE_VALUE_IC_1         0x0    /* 0000b	[7:4] */
 #define R244_MP4_MODE_SS_SELECT_IC_1              0x0    /* 000b	[10:8] */
 #define R244_MP4_MODE_MP_ENABLE_IC_1_MASK         0x1
@@ -5992,8 +5992,8 @@
 #define R245_MP5_MODE_SS_SELECT_IC_1_SHIFT        8
 
 /* MP6_MODE (IC 1) */
-#define R246_MP6_MODE_MP_ENABLE_IC_1              0x0    /* 0b	[0] */
-#define R246_MP6_MODE_MP_MODE_IC_1                0x0    /* 000b	[3:1] */
+#define R246_MP6_MODE_MP_ENABLE_IC_1              0x1    /* 1b	[0] */
+#define R246_MP6_MODE_MP_MODE_IC_1                0x3    /* 011b	[3:1] */
 #define R246_MP6_MODE_DEBOUNCE_VALUE_IC_1         0x0    /* 0000b	[7:4] */
 #define R246_MP6_MODE_SS_SELECT_IC_1              0x0    /* 000b	[10:8] */
 #define R246_MP6_MODE_MP_ENABLE_IC_1_MASK         0x1
@@ -6049,7 +6049,7 @@
 
 /* MP10_MODE (IC 1) */
 #define R250_MP10_MODE_MP_ENABLE_IC_1             0x0    /* 0b	[0] */
-#define R250_MP10_MODE_MP_MODE_IC_1               0x0    /* 000b	[3:1] */
+#define R250_MP10_MODE_MP_MODE_IC_1               0x1    /* 001b	[3:1] */
 #define R250_MP10_MODE_DEBOUNCE_VALUE_IC_1        0x0    /* 0000b	[7:4] */
 #define R250_MP10_MODE_SS_SELECT_IC_1             0x0    /* 000b	[10:8] */
 #define R250_MP10_MODE_MP_ENABLE_IC_1_MASK        0x1
@@ -7564,7 +7564,7 @@
 #define R512_LRCLK_IN1_PIN_LRCLK_IN_PULL_IC_1_SHIFT 4
 
 /* LRCLK_IN2_PIN (IC 1) */
-#define R513_LRCLK_IN2_PIN_LRCLK_IN_DRIVE_IC_1    0x0    /* 00b	[1:0] */
+#define R513_LRCLK_IN2_PIN_LRCLK_IN_DRIVE_IC_1    0x1    /* 01b	[1:0] */
 #define R513_LRCLK_IN2_PIN_LRCLK_IN_SLEW_IC_1     0x2    /* 10b	[3:2] */
 #define R513_LRCLK_IN2_PIN_LRCLK_IN_PULL_IC_1     0x1    /* 1b	[4] */
 #define R513_LRCLK_IN2_PIN_LRCLK_IN_DRIVE_IC_1_MASK 0x3
@@ -7753,7 +7753,7 @@
 /* SS_PIN (IC 1) */
 #define R530_SS_PIN_SS_DRIVE_IC_1                 0x0    /* 00b	[1:0] */
 #define R530_SS_PIN_SS_SLEW_IC_1                  0x2    /* 10b	[3:2] */
-#define R530_SS_PIN_SS_PULL_IC_1                  0x1    /* 1b	[4] */
+#define R530_SS_PIN_SS_PULL_IC_1                  0x0    /* 0b	[4] */
 #define R530_SS_PIN_SS_DRIVE_IC_1_MASK            0x3
 #define R530_SS_PIN_SS_DRIVE_IC_1_SHIFT           0
 #define R530_SS_PIN_SS_SLEW_IC_1_MASK             0xC
@@ -7764,7 +7764,7 @@
 /* MOSI_ADDR1_PIN (IC 1) */
 #define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_DRIVE_IC_1 0x0    /* 00b	[1:0] */
 #define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_SLEW_IC_1  0x2    /* 10b	[3:2] */
-#define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_PULL_IC_1  0x1    /* 1b	[4] */
+#define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_PULL_IC_1  0x0    /* 0b	[4] */
 #define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_DRIVE_IC_1_MASK 0x3
 #define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_DRIVE_IC_1_SHIFT 0
 #define R531_MOSI_ADDR1_PIN_MOSI_ADDR1_SLEW_IC_1_MASK 0xC
