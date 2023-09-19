@@ -1,7 +1,7 @@
 /*
- * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\STM32\Core\Inc\DSP\DSP_IC_1_REG.h
+ * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\DSP-Basic\Out\DSP_IC_1_REG.h
  *
- * Created:        Monday, September 18, 2023 10:17:28 PM
+ * Created:        Saturday, September 16, 2023 6:14:42 PM
  * Description:    DSP:IC 1 control register definitions.
  *
  * This software is distributed in the hope that it will be useful,
@@ -28,12 +28,12 @@
 /* PLL_CTRL1  - Registers (IC 1) */
 #define REG_PLL_CTRL1_IC_1_ADDR                   0xF001
 #define REG_PLL_CTRL1_IC_1_BYTE                   2
-#define REG_PLL_CTRL1_IC_1_VALUE                  0x3
+#define REG_PLL_CTRL1_IC_1_VALUE                  0x2
 
 /* PLL_CLK_SRC  - Registers (IC 1) */
 #define REG_PLL_CLK_SRC_IC_1_ADDR                 0xF002
 #define REG_PLL_CLK_SRC_IC_1_BYTE                 2
-#define REG_PLL_CLK_SRC_IC_1_VALUE                0x1
+#define REG_PLL_CLK_SRC_IC_1_VALUE                0x0
 
 /* PLL_ENABLE  - Registers (IC 1) */
 #define REG_PLL_ENABLE_IC_1_ADDR                  0xF003
@@ -58,12 +58,12 @@
 /* CLK_GEN1_M  - Registers (IC 1) */
 #define REG_CLK_GEN1_M_IC_1_ADDR                  0xF020
 #define REG_CLK_GEN1_M_IC_1_BYTE                  2
-#define REG_CLK_GEN1_M_IC_1_VALUE                 0x3
+#define REG_CLK_GEN1_M_IC_1_VALUE                 0x6
 
 /* CLK_GEN1_N  - Registers (IC 1) */
 #define REG_CLK_GEN1_N_IC_1_ADDR                  0xF021
 #define REG_CLK_GEN1_N_IC_1_BYTE                  2
-#define REG_CLK_GEN1_N_IC_1_VALUE                 0x2
+#define REG_CLK_GEN1_N_IC_1_VALUE                 0x1
 
 /* CLK_GEN2_M  - Registers (IC 1) */
 #define REG_CLK_GEN2_M_IC_1_ADDR                  0xF022
@@ -98,12 +98,12 @@
 /* POWER_ENABLE0  - Registers (IC 1) */
 #define REG_POWER_ENABLE0_IC_1_ADDR               0xF050
 #define REG_POWER_ENABLE0_IC_1_BYTE               2
-#define REG_POWER_ENABLE0_IC_1_VALUE              0x477
+#define REG_POWER_ENABLE0_IC_1_VALUE              0x1FFF
 
 /* POWER_ENABLE1  - Registers (IC 1) */
 #define REG_POWER_ENABLE1_IC_1_ADDR               0xF051
 #define REG_POWER_ENABLE1_IC_1_BYTE               2
-#define REG_POWER_ENABLE1_IC_1_VALUE              0x0
+#define REG_POWER_ENABLE1_IC_1_VALUE              0x1F
 
 /* ASRC_INPUT0  - Registers (IC 1) */
 #define REG_ASRC_INPUT0_IC_1_ADDR                 0xF100
@@ -363,7 +363,7 @@
 /* SERIAL_BYTE_5_0  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_5_0_IC_1_ADDR             0xF214
 #define REG_SERIAL_BYTE_5_0_IC_1_BYTE             2
-#define REG_SERIAL_BYTE_5_0_IC_1_VALUE            0x0
+#define REG_SERIAL_BYTE_5_0_IC_1_VALUE            0x9040
 
 /* SERIAL_BYTE_5_1  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_5_1_IC_1_ADDR             0xF215
@@ -373,7 +373,7 @@
 /* SERIAL_BYTE_6_0  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_6_0_IC_1_ADDR             0xF218
 #define REG_SERIAL_BYTE_6_0_IC_1_BYTE             2
-#define REG_SERIAL_BYTE_6_0_IC_1_VALUE            0x0
+#define REG_SERIAL_BYTE_6_0_IC_1_VALUE            0x9000
 
 /* SERIAL_BYTE_6_1  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_6_1_IC_1_ADDR             0xF219
@@ -383,7 +383,7 @@
 /* SERIAL_BYTE_7_0  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_7_0_IC_1_ADDR             0xF21C
 #define REG_SERIAL_BYTE_7_0_IC_1_BYTE             2
-#define REG_SERIAL_BYTE_7_0_IC_1_VALUE            0x0
+#define REG_SERIAL_BYTE_7_0_IC_1_VALUE            0x9000
 
 /* SERIAL_BYTE_7_1  - Registers (IC 1) */
 #define REG_SERIAL_BYTE_7_1_IC_1_ADDR             0xF21D
@@ -2558,7 +2558,7 @@
 /* BCLK_OUT0_PIN  - Registers (IC 1) */
 #define REG_BCLK_OUT0_PIN_IC_1_ADDR               0xF784
 #define REG_BCLK_OUT0_PIN_IC_1_BYTE               2
-#define REG_BCLK_OUT0_PIN_IC_1_VALUE              0x1A
+#define REG_BCLK_OUT0_PIN_IC_1_VALUE              0x18
 
 /* BCLK_OUT1_PIN  - Registers (IC 1) */
 #define REG_BCLK_OUT1_PIN_IC_1_ADDR               0xF785
@@ -2598,7 +2598,7 @@
 /* LRCLK_OUT0_PIN  - Registers (IC 1) */
 #define REG_LRCLK_OUT0_PIN_IC_1_ADDR              0xF78C
 #define REG_LRCLK_OUT0_PIN_IC_1_BYTE              2
-#define REG_LRCLK_OUT0_PIN_IC_1_VALUE             0x1A
+#define REG_LRCLK_OUT0_PIN_IC_1_VALUE             0x18
 
 /* LRCLK_OUT1_PIN  - Registers (IC 1) */
 #define REG_LRCLK_OUT1_PIN_IC_1_ADDR              0xF78D
@@ -2733,12 +2733,12 @@
 #define R0_PLL_CTRL0_PLL_FBDIVIDER_IC_1_SHIFT     0
 
 /* PLL_CTRL1 (IC 1) */
-#define R1_PLL_CTRL1_PLL_DIV_IC_1                 0x3    /* 11b	[1:0] */
+#define R1_PLL_CTRL1_PLL_DIV_IC_1                 0x2    /* 10b	[1:0] */
 #define R1_PLL_CTRL1_PLL_DIV_IC_1_MASK            0x3
 #define R1_PLL_CTRL1_PLL_DIV_IC_1_SHIFT           0
 
 /* PLL_CLK_SRC (IC 1) */
-#define R2_PLL_CLK_SRC_CLKSRC_IC_1                0x1    /* 1b	[0] */
+#define R2_PLL_CLK_SRC_CLKSRC_IC_1                0x0    /* 0b	[0] */
 #define R2_PLL_CLK_SRC_CLKSRC_IC_1_MASK           0x1
 #define R2_PLL_CLK_SRC_CLKSRC_IC_1_SHIFT          0
 
@@ -2766,12 +2766,12 @@
 #define R6_PLL_WATCHDOG_PLL_WATCHDOG_IC_1_SHIFT   0
 
 /* CLK_GEN1_M (IC 1) */
-#define R7_CLK_GEN1_M_CLOCKGEN1_M_IC_1            0x03   /* 000000011b	[8:0] */
+#define R7_CLK_GEN1_M_CLOCKGEN1_M_IC_1            0x06   /* 000000110b	[8:0] */
 #define R7_CLK_GEN1_M_CLOCKGEN1_M_IC_1_MASK       0x1FF
 #define R7_CLK_GEN1_M_CLOCKGEN1_M_IC_1_SHIFT      0
 
 /* CLK_GEN1_N (IC 1) */
-#define R8_CLK_GEN1_N_CLOCKGEN1_N_IC_1            0x02   /* 000000010b	[8:0] */
+#define R8_CLK_GEN1_N_CLOCKGEN1_N_IC_1            0x01   /* 000000001b	[8:0] */
 #define R8_CLK_GEN1_N_CLOCKGEN1_N_IC_1_MASK       0x1FF
 #define R8_CLK_GEN1_N_CLOCKGEN1_N_IC_1_SHIFT      0
 
@@ -2812,16 +2812,16 @@
 #define R15_POWER_ENABLE0_SIN0_PWR_IC_1           0x1    /* 1b	[0] */
 #define R15_POWER_ENABLE0_SIN1_PWR_IC_1           0x1    /* 1b	[1] */
 #define R15_POWER_ENABLE0_SIN2_PWR_IC_1           0x1    /* 1b	[2] */
-#define R15_POWER_ENABLE0_SIN3_PWR_IC_1           0x0    /* 0b	[3] */
+#define R15_POWER_ENABLE0_SIN3_PWR_IC_1           0x1    /* 1b	[3] */
 #define R15_POWER_ENABLE0_SOUT0_PWR_IC_1          0x1    /* 1b	[4] */
 #define R15_POWER_ENABLE0_SOUT1_PWR_IC_1          0x1    /* 1b	[5] */
 #define R15_POWER_ENABLE0_SOUT2_PWR_IC_1          0x1    /* 1b	[6] */
-#define R15_POWER_ENABLE0_SOUT3_PWR_IC_1          0x0    /* 0b	[7] */
-#define R15_POWER_ENABLE0_ASRCBANK0_PWR_IC_1      0x0    /* 0b	[8] */
-#define R15_POWER_ENABLE0_ASRCBANK1_PWR_IC_1      0x0    /* 0b	[9] */
+#define R15_POWER_ENABLE0_SOUT3_PWR_IC_1          0x1    /* 1b	[7] */
+#define R15_POWER_ENABLE0_ASRCBANK0_PWR_IC_1      0x1    /* 1b	[8] */
+#define R15_POWER_ENABLE0_ASRCBANK1_PWR_IC_1      0x1    /* 1b	[9] */
 #define R15_POWER_ENABLE0_CLK_GEN1_PWR_IC_1       0x1    /* 1b	[10] */
-#define R15_POWER_ENABLE0_CLK_GEN2_PWR_IC_1       0x0    /* 0b	[11] */
-#define R15_POWER_ENABLE0_CLK_GEN3_PWR_IC_1       0x0    /* 0b	[12] */
+#define R15_POWER_ENABLE0_CLK_GEN2_PWR_IC_1       0x1    /* 1b	[11] */
+#define R15_POWER_ENABLE0_CLK_GEN3_PWR_IC_1       0x1    /* 1b	[12] */
 #define R15_POWER_ENABLE0_SIN0_PWR_IC_1_MASK      0x1
 #define R15_POWER_ENABLE0_SIN0_PWR_IC_1_SHIFT     0
 #define R15_POWER_ENABLE0_SIN1_PWR_IC_1_MASK      0x2
@@ -2850,11 +2850,11 @@
 #define R15_POWER_ENABLE0_CLK_GEN3_PWR_IC_1_SHIFT 12
 
 /* POWER_ENABLE1 (IC 1) */
-#define R16_POWER_ENABLE1_ADC_PWR_IC_1            0x0    /* 0b	[0] */
-#define R16_POWER_ENABLE1_RX_PWR_IC_1             0x0    /* 0b	[1] */
-#define R16_POWER_ENABLE1_TX_PWR_IC_1             0x0    /* 0b	[2] */
-#define R16_POWER_ENABLE1_PDM0_PWR_IC_1           0x0    /* 0b	[3] */
-#define R16_POWER_ENABLE1_PDM1_PWR_IC_1           0x0    /* 0b	[4] */
+#define R16_POWER_ENABLE1_ADC_PWR_IC_1            0x1    /* 1b	[0] */
+#define R16_POWER_ENABLE1_RX_PWR_IC_1             0x1    /* 1b	[1] */
+#define R16_POWER_ENABLE1_TX_PWR_IC_1             0x1    /* 1b	[2] */
+#define R16_POWER_ENABLE1_PDM0_PWR_IC_1           0x1    /* 1b	[3] */
+#define R16_POWER_ENABLE1_PDM1_PWR_IC_1           0x1    /* 1b	[4] */
 #define R16_POWER_ENABLE1_ADC_PWR_IC_1_MASK       0x1
 #define R16_POWER_ENABLE1_ADC_PWR_IC_1_SHIFT      0
 #define R16_POWER_ENABLE1_RX_PWR_IC_1_MASK        0x2
@@ -3355,12 +3355,12 @@
 /* SERIAL_BYTE_5_0 (IC 1) */
 #define R68_SERIAL_BYTE_5_0_TDM_MODE_IC_1         0x0    /* 000b	[2:0] */
 #define R68_SERIAL_BYTE_5_0_DATA_FMT_IC_1         0x0    /* 00b	[4:3] */
-#define R68_SERIAL_BYTE_5_0_WORD_LEN_IC_1         0x0    /* 00b	[6:5] */
+#define R68_SERIAL_BYTE_5_0_WORD_LEN_IC_1         0x2    /* 10b	[6:5] */
 #define R68_SERIAL_BYTE_5_0_BCLK_POL_IC_1         0x0    /* 0b	[7] */
 #define R68_SERIAL_BYTE_5_0_LRCLK_POL_IC_1        0x0    /* 0b	[8] */
 #define R68_SERIAL_BYTE_5_0_LRCLK_MODE_IC_1       0x0    /* 0b	[9] */
-#define R68_SERIAL_BYTE_5_0_BCLK_SRC_IC_1         0x0    /* 000b	[12:10] */
-#define R68_SERIAL_BYTE_5_0_LRCLK_SRC_IC_1        0x0    /* 000b	[15:13] */
+#define R68_SERIAL_BYTE_5_0_BCLK_SRC_IC_1         0x4    /* 100b	[12:10] */
+#define R68_SERIAL_BYTE_5_0_LRCLK_SRC_IC_1        0x4    /* 100b	[15:13] */
 #define R68_SERIAL_BYTE_5_0_TDM_MODE_IC_1_MASK    0x7
 #define R68_SERIAL_BYTE_5_0_TDM_MODE_IC_1_SHIFT   0
 #define R68_SERIAL_BYTE_5_0_DATA_FMT_IC_1_MASK    0x18
@@ -3396,8 +3396,8 @@
 #define R70_SERIAL_BYTE_6_0_BCLK_POL_IC_1         0x0    /* 0b	[7] */
 #define R70_SERIAL_BYTE_6_0_LRCLK_POL_IC_1        0x0    /* 0b	[8] */
 #define R70_SERIAL_BYTE_6_0_LRCLK_MODE_IC_1       0x0    /* 0b	[9] */
-#define R70_SERIAL_BYTE_6_0_BCLK_SRC_IC_1         0x0    /* 000b	[12:10] */
-#define R70_SERIAL_BYTE_6_0_LRCLK_SRC_IC_1        0x0    /* 000b	[15:13] */
+#define R70_SERIAL_BYTE_6_0_BCLK_SRC_IC_1         0x4    /* 100b	[12:10] */
+#define R70_SERIAL_BYTE_6_0_LRCLK_SRC_IC_1        0x4    /* 100b	[15:13] */
 #define R70_SERIAL_BYTE_6_0_TDM_MODE_IC_1_MASK    0x7
 #define R70_SERIAL_BYTE_6_0_TDM_MODE_IC_1_SHIFT   0
 #define R70_SERIAL_BYTE_6_0_DATA_FMT_IC_1_MASK    0x18
@@ -3433,8 +3433,8 @@
 #define R72_SERIAL_BYTE_7_0_BCLK_POL_IC_1         0x0    /* 0b	[7] */
 #define R72_SERIAL_BYTE_7_0_LRCLK_POL_IC_1        0x0    /* 0b	[8] */
 #define R72_SERIAL_BYTE_7_0_LRCLK_MODE_IC_1       0x0    /* 0b	[9] */
-#define R72_SERIAL_BYTE_7_0_BCLK_SRC_IC_1         0x0    /* 000b	[12:10] */
-#define R72_SERIAL_BYTE_7_0_LRCLK_SRC_IC_1        0x0    /* 000b	[15:13] */
+#define R72_SERIAL_BYTE_7_0_BCLK_SRC_IC_1         0x4    /* 100b	[12:10] */
+#define R72_SERIAL_BYTE_7_0_LRCLK_SRC_IC_1        0x4    /* 100b	[15:13] */
 #define R72_SERIAL_BYTE_7_0_TDM_MODE_IC_1_MASK    0x7
 #define R72_SERIAL_BYTE_7_0_TDM_MODE_IC_1_SHIFT   0
 #define R72_SERIAL_BYTE_7_0_DATA_FMT_IC_1_MASK    0x18
@@ -7498,7 +7498,7 @@
 #define R506_BCLK_IN3_PIN_BCLK_IN_PULL_IC_1_SHIFT 4
 
 /* BCLK_OUT0_PIN (IC 1) */
-#define R507_BCLK_OUT0_PIN_BCLK_OUT_DRIVE_IC_1    0x2    /* 10b	[1:0] */
+#define R507_BCLK_OUT0_PIN_BCLK_OUT_DRIVE_IC_1    0x0    /* 00b	[1:0] */
 #define R507_BCLK_OUT0_PIN_BCLK_OUT_SLEW_IC_1     0x2    /* 10b	[3:2] */
 #define R507_BCLK_OUT0_PIN_BCLK_OUT_PULL_IC_1     0x1    /* 1b	[4] */
 #define R507_BCLK_OUT0_PIN_BCLK_OUT_DRIVE_IC_1_MASK 0x3
@@ -7586,7 +7586,7 @@
 #define R514_LRCLK_IN3_PIN_LRCLK_IN_PULL_IC_1_SHIFT 4
 
 /* LRCLK_OUT0_PIN (IC 1) */
-#define R515_LRCLK_OUT0_PIN_LRCLK_OUT_DRIVE_IC_1  0x2    /* 10b	[1:0] */
+#define R515_LRCLK_OUT0_PIN_LRCLK_OUT_DRIVE_IC_1  0x0    /* 00b	[1:0] */
 #define R515_LRCLK_OUT0_PIN_LRCLK_OUT_SLEW_IC_1   0x2    /* 10b	[3:2] */
 #define R515_LRCLK_OUT0_PIN_LRCLK_OUT_PULL_IC_1   0x1    /* 1b	[4] */
 #define R515_LRCLK_OUT0_PIN_LRCLK_OUT_DRIVE_IC_1_MASK 0x3

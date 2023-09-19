@@ -37,7 +37,12 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_POT 12
+#define ADC_POT 15
+#define VOL_ARRAY 11
+#define LOUD_LOW_ARRAY 12
+#define LOUD_HIGH_ARRAY 13
+#define LOUD_GRL_ARRAY 14
+
 #define ADC_ADDR 0x94
 #define DAC_ADDR 0x98
 /* USER CODE END PD */
@@ -98,84 +103,89 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	  uint16_t k = 0;
 	  uint16_t pote_aux = 0;
-	  uint16_t BandAddress[ADC_POT+1]; // Addresses of filters
+	  uint16_t BandAddress[ADC_POT]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
 	  uint32_t boost_data[30]; // Fixed boost loudness values
 
-//	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG1_ADDR;
-//	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG6_ADDR;
-//	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG4_ADDR;
-//	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG2_ADDR;
-//	  BandAddress[4] = MOD_LOUDNESSLHEXT1_ALG0_LEVEL0_ADDR;
-//	  BandAddress[5] = MOD_LOUDNESSLHEXT1_ALG0_LEVEL1_ADDR;
-//	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG6_ADDR;
-//	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG4_ADDR;
-//	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG2_ADDR;
-//	  BandAddress[9] = MOD_LOUD_DCINPALG5_ADDR;
-//	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG3_ADDR;
-//	  BandAddress[11] = MOD_VOL_ALG0_TARGET_ADDR;
+	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG145X1VALUE_ADDR;
+	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG145X2VALUE_ADDR;
+	  BandAddress[2] = MOD_BAND128_SEL_DCINPALG145X3VALUE_ADDR;
+	  BandAddress[3] = MOD_BAND256_SEL_DCINPALG145X4VALUE_ADDR;
+	  BandAddress[4] = MOD_BAND512_SEL_DCINPALG145X5VALUE_ADDR;
+	  BandAddress[5] = MOD_BAND1K_SEL_DCINPALG145X6VALUE_ADDR;
+	  BandAddress[6] = MOD_BAND2K_SEL_DCINPALG145X7VALUE_ADDR;
+	  BandAddress[7] = MOD_BAND4K_SEL_DCINPALG145X8VALUE_ADDR;
+	  BandAddress[8] = MOD_BAND8K_SEL_DCINPALG145X9VALUE_ADDR;
+	  BandAddress[9] = MOD_BAND16K_SEL_DCINPALG145X10VALUE_ADDR;
+	  BandAddress[10] = MOD_BANDSUB_SEL_DCINPALG145X11VALUE_ADDR;
+	  BandAddress[VOL_ARRAY] = MOD_VOL_GAINALGNS145X1GAIN_ADDR;
+	  BandAddress[LOUD_LOW_ARRAY] = MOD_LOUD_ALG0_LEVEL0_ADDR;
+	  BandAddress[LOUD_HIGH_ARRAY] = MOD_LOUD_ALG0_LEVEL1_ADDR;
+	  BandAddress[LOUD_GRL_ARRAY] = MOD_LOUD_SEL_DCINPALG145X12VALUE_ADDR;
 
-	  vol_data[29] = 0x00800000; // 0dB
-	  vol_data[28] = 0x00721482; // -1dB
-	  vol_data[27] = 0x0065AC8C; // -2dB
-	  vol_data[26] = 0x005A9DF7; // -3dB
-	  vol_data[25] = 0x0050C335; // -4dB
-	  vol_data[24] = 0x0047FACC; // -5dB
-	  vol_data[23] = 0x004026E7; // -6dB
-	  vol_data[22] = 0x0037DFC0; // -7dB (-7.2dB)
-	  vol_data[21] = 0x0032F52C; // -8dB
-	  vol_data[20] = 0x002D6A86; // -9dB
-	  vol_data[19] = 0x00287A26; // -10dB
-	  vol_data[18] = 0x00241346; // -11dB
-	  vol_data[17] = 0x002026F3; // -12dB
-	  vol_data[16] = 0x001CA7D7; // -13dB
-	  vol_data[15] = 0x00198A13; // -14dB
-	  vol_data[14] = 0x0016C310; // -15dB
-	  vol_data[13] = 0x00144960; // -16dB
-	  vol_data[12] = 0x0012149A; // -17dB
-	  vol_data[11] = 0x00101D3F; // -18dB
-	  vol_data[10] = 0x000E5CA1; // -19dB
-	  vol_data[9] = 0x000CCCCC; // -20dB
-	  vol_data[8] = 0x000B6873; // -21dB
-	  vol_data[7] = 0x000A2ADA; // -22dB
-	  vol_data[6] = 0x00090FCB; // -23dB
-	  vol_data[5] = 0x00081385; // -24dB
-	  vol_data[4] = 0x000732AE; // -25dB
-	  vol_data[3] = 0x00066A4A; // -26dB
-	  vol_data[2] = 0x0005B7B1; // -27dB
-	  vol_data[1] = 0x00051884; // -28dB
-	  vol_data[0] = 0x00048AA7; // -29dB
+	  // 8.24 FixPoint
+	  vol_data[29] = 0x01000000; // 0dB
+	  vol_data[28] = 0x00e42904; // -1dB
+	  vol_data[27] = 0x00cb5918; // -2dB
+	  vol_data[26] = 0x00b53bee; // -3dB
+	  vol_data[25] = 0x00a1866a; // -4dB
+	  vol_data[24] = 0x008ff598; // -5dB
+	  vol_data[23] = 0x00804dce; // -6dB
+	  vol_data[22] = 0x006fbf80; // -7dB (-7.2dB)
+	  vol_data[21] = 0x0065ea58; // -8dB
+	  vol_data[20] = 0x005ad50c; // -9dB
+	  vol_data[19] = 0x0050f44c; // -10dB
+	  vol_data[18] = 0x0048268c; // -11dB
+	  vol_data[17] = 0x00404de6; // -12dB
+	  vol_data[16] = 0x00394fae; // -13dB
+	  vol_data[15] = 0x00331426; // -14dB
+	  vol_data[14] = 0x002d8620; // -15dB
+	  vol_data[13] = 0x002892c0; // -16dB
+	  vol_data[12] = 0x00242934; // -17dB
+	  vol_data[11] = 0x00203a7e; // -18dB
+	  vol_data[10] = 0x001cb942; // -19dB
+	  vol_data[9] = 0x00199998; // -20dB
+	  vol_data[8] = 0x0016d0e6; // -21dB
+	  vol_data[7] = 0x001455b4; // -22dB
+	  vol_data[6] = 0x00121f96; // -23dB
+	  vol_data[5] = 0x0010270a; // -24dB
+	  vol_data[4] = 0x000e655c; // -25dB
+	  vol_data[3] = 0x000cd494; // -26dB
+	  vol_data[2] = 0x000b6f62; // -27dB
+	  vol_data[1] = 0x000a3108; // -28dB
+	  vol_data[0] = 0x0009154e; // -29dB
 
-	  boost_data[29] = 0x01400000; // 2.50
-	  boost_data[28] = 0x01333333; // 2.40
-	  boost_data[27] = 0x012B851E; // 2.34
-	  boost_data[26] = 0x01228F5C; // 2.27
-	  boost_data[25] = 0x01199999; // 2.20
-	  boost_data[24] = 0x0110A3D7; // 2.13
-	  boost_data[23] = 0x0107AE14; // 2.06
-	  boost_data[22] = 0x01000000; // 2.00
-	  boost_data[21] = 0x00F70A3D; // 1.93
-	  boost_data[20] = 0x00EE147A; // 1.86
-	  boost_data[19] = 0x00E51EB8; // 1.79
-	  boost_data[18] = 0x00DC28F5; // 1.72
-	  boost_data[17] = 0x00D47AE1; // 1.66
-	  boost_data[16] = 0x00CB851E; // 1.59
-	  boost_data[15] = 0x00C28F5C; // 1.52
-	  boost_data[14] = 0x00B99999; // 1.45
-	  boost_data[13] = 0x00B0A3D7; // 1.38
-	  boost_data[12] = 0x00A8F5C2; // 1.32
-	  boost_data[11] = 0x00A00000; // 1.25
-	  boost_data[10] = 0x00970A3D; // 1.18
-	  boost_data[9] =  0x008E147A; // 1.11
-	  boost_data[8] =  0x00851EB8; // 1.04
-	  boost_data[7] =  0x007D70A3; // 0.98
-	  boost_data[6] =  0x00747AE1; // 0.91
-	  boost_data[5] =  0x006B851E; // 0.84
-	  boost_data[4] =  0x00628F5C; // 0.77
-	  boost_data[3] =  0x00599999; // 0.70
-	  boost_data[2] =  0x0051EB85; // 0.64
-	  boost_data[1] =  0x0048F5C2; // 0.57
-	  boost_data[0] =  0x00400000; // 0.50
+	  // 8.24 FixPoint
+	  boost_data[29] = 0x02800000; // 2.50
+	  boost_data[28] = 0x02666666; // 2.40
+	  boost_data[27] = 0x02570a3c; // 2.34
+	  boost_data[26] = 0x02451eb8; // 2.27
+	  boost_data[25] = 0x02333332; // 2.20
+	  boost_data[24] = 0x022147ae; // 2.13
+	  boost_data[23] = 0x020f5c28; // 2.06
+	  boost_data[22] = 0x02000000; // 2.00
+	  boost_data[21] = 0x01ee147a; // 1.93
+	  boost_data[20] = 0x01dc28f4; // 1.86
+	  boost_data[19] = 0x01ca3d70; // 1.79
+	  boost_data[18] = 0x01b851ea; // 1.72
+	  boost_data[17] = 0x01a8f5c2; // 1.66
+	  boost_data[16] = 0x01970a3c; // 1.59
+	  boost_data[15] = 0x01851eb8; // 1.52
+	  boost_data[14] = 0x01733332; // 1.45
+	  boost_data[13] = 0x016147ae; // 1.38
+	  boost_data[12] = 0x0151eb84; // 1.32
+	  boost_data[11] = 0x01400000; // 1.25
+	  boost_data[10] = 0x012e147a; // 1.18
+	  boost_data[9] =  0x011c28f4; // 1.11
+	  boost_data[8] =  0x010a3d70; // 1.04
+	  boost_data[7] =  0x00fae146; // 0.98
+	  boost_data[6] =  0x00e8f5c2; // 0.91
+	  boost_data[5] =  0x00d70a3c; // 0.84
+	  boost_data[4] =  0x00c51eb8; // 0.77
+	  boost_data[3] =  0x00b33332; // 0.70
+	  boost_data[2] =  0x00a3d70a; // 0.64
+	  boost_data[1] =  0x0091eb84; // 0.57
+	  boost_data[0] =  0x00800000; // 0.50
 
 	  for(k=0; k<30; k++)
 	  {
@@ -272,9 +282,6 @@ int main(void)
   stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
   stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
 
-  stat = HAL_I2C_Mem_Read(&hi2c1, ADC_ADDR, 0x73, 1, auxData, 1, 1000);
-  stat = HAL_I2C_Mem_Read(&hi2c1, ADC_ADDR, 0x74, 1, auxData, 1, 1000);
-
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
@@ -311,92 +318,67 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  aux[0] = 0x00;
-//	  aux[1] = 0x00;
-//	  aux[2] = 0x00;
-//
-//	  for(k=0; k<4; k++) // Filters 32Hz - 512Hz
-//	  {
-//		  if(flag[k] == 1)
-//		  {
-//			  flag[k] = 0;
-//			  aux[3] = 29 - pote[k];
-//			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
-//		  }
-//	  }
-//
-//	  aux[0] = 0x00;
-//	  aux[1] = 0x00;
-//	  aux[2] = 0x00;
-//
-//	  for(k=6; k<(ADC_POT-3); k++) // Filters 1KHz - 16KHz
-//	  {
-//		  if(flag[k] == 1)
-//		  {
-//			  flag[k] = 0;
-//			  aux[3] = 29 - pote[k];
-//			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[k], 4, aux);
-//		  }
-//	  }
-//
-//	  aux[0] = 0x00;
-//	  aux[1] = 0x00;
-//	  aux[2] = 0x00;
-//
-//	  if(flag[ADC_POT-2] == 1) // Subwoofer
-//	  {
-//		  flag[ADC_POT-2] = 0;
-//		  aux[3] = 29 - pote[ADC_POT-2];
-//		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-2], 4, aux);
-//	  }
-//
-//	  aux[0] = 0x00;
-//	  aux[1] = 0x00;
-//	  aux[2] = 0x00;
-//
-//	  if(flag[ADC_POT-1] == 1) // Volume
-//	  {
-//		  flag[ADC_POT-1] = 0;
-//		  pote_aux = 29 - pote[ADC_POT-1];
-//		  aux[3] = 0xFF & (vol_data[pote_aux]);
-//		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
-//		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
-//		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
-//		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux);
-//	  }
-//
-//	  if(flag[4] == 1) // Loudness Low Boost
-//	  {
-//		  flag[4] = 0;
-//		  pote_aux = 29 - pote[4];
-//		  aux[3] = 0xFF & (boost_data[pote_aux]);
-//		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
-//		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
-//		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
-//		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[4], 4, aux);
-//	  }
-//
-//	  if(flag[5] == 1) // Loudness High Boost
-//	  {
-//		  flag[5] = 0;
-//		  pote_aux = 29 - pote[5];
-//		  aux[3] = 0xFF & (boost_data[pote_aux]);
-//		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
-//		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
-//		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
-//		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[5], 4, aux);
-//	  }
-//
-//	  if(flag[9] == 1) // Loudness
-//	  {
-//		  flag[9] = 0;
-//		  pote_aux = 29 - pote[9];
-//		  aux[3] = 0xFF & (vol_data[pote_aux]);
-//		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
-//		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
-//		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
-//		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[9], 4, aux);
-//	  }
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  for(k=0; k<VOL_ARRAY; k++) // Filters 32Hz - 16KHz + Subwoofer
+	  {
+		  if(flag[k] == 1)
+		  {
+			  flag[k] = 0;
+			  aux[3] = 29 - pote[k];
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
+		  }
+	  }
+
+	  aux[0] = 0x00;
+	  aux[1] = 0x00;
+	  aux[2] = 0x00;
+
+	  if(flag[VOL_ARRAY] == 1) // Volume
+	  {
+		  flag[VOL_ARRAY] = 0;
+		  pote_aux = 29 - pote[VOL_ARRAY];
+		  aux[3] = 0xFF & (vol_data[pote_aux]);
+		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[VOL_ARRAY], 4, aux);
+	  }
+
+	  if(flag[LOUD_LOW_ARRAY] == 1) // Loudness Low Boost
+	  {
+		  flag[LOUD_LOW_ARRAY] = 0;
+		  pote_aux = 29 - pote[LOUD_LOW_ARRAY];
+		  aux[3] = 0xFF & (boost_data[pote_aux]);
+		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_LOW_ARRAY], 4, aux);
+	  }
+
+	  if(flag[LOUD_HIGH_ARRAY] == 1) // Loudness High Boost
+	  {
+		  flag[LOUD_HIGH_ARRAY] = 0;
+		  pote_aux = 29 - pote[LOUD_HIGH_ARRAY];
+		  aux[3] = 0xFF & (boost_data[pote_aux]);
+		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_HIGH_ARRAY], 4, aux);
+	  }
+
+	  if(flag[LOUD_GRL_ARRAY] == 1) // Loudness
+	  {
+		  flag[LOUD_GRL_ARRAY] = 0;
+		  pote_aux = 29 - pote[LOUD_GRL_ARRAY];
+		  aux[3] = 0xFF & (vol_data[pote_aux]);
+		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_GRL_ARRAY], 4, aux);
+	  }
 
   }
   /* USER CODE END 3 */
@@ -831,37 +813,42 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 	uint32_t i = 0;
 	uint32_t j = 0;
+	uint32_t k = 0;
 
 
-	for(i=0; i<30; i++) // For volume potentiometer
+	for(k=VOL_ARRAY; k<ADC_POT; k++) // For volume, loud low, loud high, loud general
 	{
-		if((i == 0) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
+		for(i=0; i<30; i++)
 		{
-			if(pote[ADC_POT-1] != i)
+			if((i == 0) && (value[k] < (linear_in_table[i+1])-15))
 			{
-				pote[ADC_POT-1] = i;
-				flag[ADC_POT-1] = 1;
+				if(pote[k] != i)
+				{
+					pote[k] = i;
+					flag[k] = 1;
+				}
 			}
-		}
-		else if((i > 0) && (i < 29 ) && (value[ADC_POT-1] > (linear_in_table[i]+15)) && (value[ADC_POT-1] < (linear_in_table[i+1])-15))
-		{
-			if(pote[ADC_POT-1] != i)
+			else if((i > 0) && (i < 29 ) && (value[k] > (linear_in_table[i]+15)) && (value[k] < (linear_in_table[i+1])-15))
 			{
-				pote[ADC_POT-1] = i;
-				flag[ADC_POT-1] = 1;
+				if(pote[k] != i)
+				{
+					pote[k] = i;
+					flag[k] = 1;
+				}
 			}
-		}
-		else if((i == 29) && (value[ADC_POT-1] > (linear_in_table[i]+15)))
-		{
-			if(pote[ADC_POT-1] != i)
+			else if((i == 29) && (value[k] > (linear_in_table[i]+15)))
 			{
-				pote[ADC_POT-1] = i;
-				flag[ADC_POT-1] = 1;
+				if(pote[k] != i)
+				{
+					pote[k] = i;
+					flag[k] = 1;
+				}
 			}
 		}
 	}
 
-	for(j=0; j<(ADC_POT-1); j++) // For filter potentiometers
+
+	for(j=0; j<(VOL_ARRAY); j++) // For filter 32Hz - 16KHz + Subwoofer
 	{
 		for(i=0; i<30; i++)
 		{
