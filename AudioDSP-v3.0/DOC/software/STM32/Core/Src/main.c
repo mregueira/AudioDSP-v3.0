@@ -106,6 +106,7 @@ int main(void)
 	  uint16_t BandAddress[ADC_POT]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
 	  uint32_t boost_data[30]; // Fixed boost loudness values
+	  uint32_t comp_data[30]; // Fixed compensation values
 
 	  BandAddress[0] = MOD_BAND32_SEL_DCINPALG145X1VALUE_ADDR;
 	  BandAddress[1] = MOD_BAND64_SEL_DCINPALG145X2VALUE_ADDR;
@@ -154,6 +155,38 @@ int main(void)
 	  vol_data[2] = 0x000b6f62; // -27dB
 	  vol_data[1] = 0x000a3108; // -28dB
 	  vol_data[0] = 0x0009154e; // -29dB
+
+	  // 8.24 Compensation FixPoint
+	  comp_data[29] = 0x01000000; // 0dB
+	  comp_data[28] = 0x011F3B64; // +1dB
+	  comp_data[27] = 0x014248E8; // +2dB
+	  comp_data[26] = 0x01699C0F; // +3dB
+	  comp_data[25] = 0x0195BB8C; // +4dB
+	  comp_data[24] = 0x01C73D51; // +5dB
+	  comp_data[23] = 0x02000000; // +6dB
+	  comp_data[22] = 0x023D1CD1; // +7dB
+	  comp_data[21] = 0x02830AFD; // +8dB
+	  comp_data[20] = 0x02D1818B; // +9dB
+	  comp_data[19] = 0x03298B07; // +10dB
+	  comp_data[18] = 0x038C5280; // +11dB
+	  comp_data[17] = 0x03FB2783; // +12dB
+	  comp_data[16] = 0x0477828F; // +13dB
+	  comp_data[15] = 0x05030A10; // +14dB
+	  comp_data[14] = 0x059F9802; // +15dB
+	  comp_data[13] = 0x064F4034; // +16dB
+	  comp_data[12] = 0x07145759; // +17dB
+	  comp_data[11] = 0x07F17AF3; // +18dB
+	  comp_data[10] = 0x08E99A36; // +19dB
+	  comp_data[9] = 0x0A000000; // +20dB
+	  comp_data[8] = 0x0B385E03; // +21dB
+	  comp_data[7] = 0x0C96D95B; // +22dB
+	  comp_data[6] = 0x0E20189B; // +23dB
+	  comp_data[5] = 0x0FD9539A; // +24dB
+	  comp_data[4] = 0x11C86531; // +25dB
+	  comp_data[3] = 0x13F3DF1C; // +26dB
+	  comp_data[2] = 0x16632049; // +27dB
+	  comp_data[1] = 0x191E6DE4; // +28dB
+	  comp_data[0] = 0x1C2F0F70; // +29dB
 
 	  // 8.24 FixPoint
 	  boost_data[29] = 0x02800000; // 2.50
@@ -372,12 +405,17 @@ int main(void)
 	  if(flag[LOUD_GRL_ARRAY] == 1) // Loudness
 	  {
 		  flag[LOUD_GRL_ARRAY] = 0;
-		  pote_aux = 29 - pote[LOUD_GRL_ARRAY];
+		  pote_aux = pote[LOUD_GRL_ARRAY];
 		  aux[3] = 0xFF & (vol_data[pote_aux]);
 		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
 		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
 		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
 		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_GRL_ARRAY], 4, aux);
+		  aux[3] = 0xFF & (comp_data[pote_aux]);
+		  aux[2] = 0xFF & ((comp_data[pote_aux])>>8);
+		  aux[1] = 0xFF & ((comp_data[pote_aux])>>16);
+		  aux[0] = 0xFF & ((comp_data[pote_aux])>>24);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR, 4, aux);
 	  }
 
   }

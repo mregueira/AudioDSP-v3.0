@@ -1,19 +1,19 @@
 ADAU145X Assembler, Analog Devices Inc.
 Version: 4.7.0,1827  (built 4/5/2022)
 
-##### Compile Started: Monday, September 18, 2023 10:17:20 PM #####
+##### Compile Started: Tuesday, September 19, 2023 11:18:54 PM #####
 ADAU145X Assembler, Analog Devices Inc.
 Version: 4.7.0,1827  (built 4/5/2022)
 
-##### Compile Started: Monday, September 18, 2023 10:17:20 PM #####
+##### Compile Started: Tuesday, September 19, 2023 11:18:54 PM #####
 ##### Compile succeeded:  0 errors, 0 warnings #####
 
 ##### Summary #####
-DM0 RAM used:       01786    (of 20480)
-DM1 RAM used:       00540    (of 20480)
+DM0 RAM used:       01787    (of 20480)
+DM1 RAM used:       00545    (of 20480)
 PM  RAM used(Data): 00000    (of 8192)
-PM  RAM used(Inst): 01661    (of 8192) 1079 instructions (32bit: 497  64bit: 582)
-Total PM used:      01661    (of 8192)
+PM  RAM used(Inst): 01679    (of 8192) 1094 instructions (32bit: 509  64bit: 585)
+Total PM used:      01679    (of 8192)
 
 --------------------------------------------------------------------------------------
 STREAM                        Inst      Inst      DM0     DM1     PM
@@ -23,8 +23,8 @@ STACK                          -         -        16      0       0
 Band16k                       83        141       158     52      0
 Band8k                        83        141       158     47      0
 Band4k                        83        141       158     47      0
-Band2k                        83        135       158     47      0
-Band1k                        83        130       158     47      0
+Band2k                        83        136       158     47      0
+Band1k                        83        132       158     47      0
 Band512                       83        130       158     47      0
 Band256                       83        130       158     47      0
 Band128                       83        130       158     47      0
@@ -33,6 +33,7 @@ Band32                        83        130       158     47      0
 Loud                          78        115       11      25      0
 BandSub                       43        62        158     12      0
 FRAMEWORK                     52        33        4       7       0
+LoudComp                      15        15        1       5       0
 Vol                           15        15        1       0       0
 Input1                        4         4         0       2       0
 Input2                        4         4         0       2       0
@@ -56,7 +57,7 @@ Band512-Sel                   2         2         1       1       0
 Band256-Sel                   2         2         1       1       0
 Output6                       2         2         0       0       0
 --------------------------------------------------------------------------------------
-Total                         1066      1619      1782    536     0
+Total                         1081      1637      1783    541     0
 --------------------------------------------------------------------------------------
-(% Fs=192.0kHz)               70%       20%       9%      3%      0%
+(% Fs=192.0kHz)               71%       20%       9%      3%      0%
 

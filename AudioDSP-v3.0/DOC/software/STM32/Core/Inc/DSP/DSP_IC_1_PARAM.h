@@ -1,7 +1,7 @@
 /*
  * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\STM32\Core\Inc\DSP\DSP_IC_1_PARAM.h
  *
- * Created:        Monday, September 18, 2023 10:17:28 PM
+ * Created:        Tuesday, September 19, 2023 11:19:00 PM
  * Description:    DSP:IC 1 parameter RAM definitions.
  *
  * This software is distributed in the hope that it will be useful,
@@ -514,7 +514,7 @@
 #define MOD_LOUD_ALG0_LEVEL0_VALUE                     SIGMASTUDIOTYPE_8_24_CONVERT(1.22)
 #define MOD_LOUD_ALG0_LEVEL0_TYPE                      SIGMASTUDIOTYPE_8_24
 #define MOD_LOUD_ALG0_LEVEL1_ADDR                      182
-#define MOD_LOUD_ALG0_LEVEL1_VALUE                     SIGMASTUDIOTYPE_8_24_CONVERT(1.82)
+#define MOD_LOUD_ALG0_LEVEL1_VALUE                     SIGMASTUDIOTYPE_8_24_CONVERT(1.62)
 #define MOD_LOUD_ALG0_LEVEL1_TYPE                      SIGMASTUDIOTYPE_8_24
 #define MOD_LOUD_ALG0_LOUDNESSLHEXT42ALG1STEP_ADDR     183
 #define MOD_LOUD_ALG0_LOUDNESSLHEXT42ALG1STEP_VALUE    SIGMASTUDIOTYPE_8_24_CONVERT(0.000244140625)
@@ -5207,10 +5207,17 @@
 #define MOD_LOUD_SEL_DCINPALG145X12VALUE_VALUE         SIGMASTUDIOTYPE_8_24_CONVERT(1)
 #define MOD_LOUD_SEL_DCINPALG145X12VALUE_TYPE          SIGMASTUDIOTYPE_8_24
 
+/* Module LoudComp - Gain*/
+#define MOD_LOUDCOMP_COUNT                             1
+#define MOD_LOUDCOMP_DEVICE                            "IC1"
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR           1751
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_VALUE          SIGMASTUDIOTYPE_8_24_CONVERT(1)
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_TYPE           SIGMASTUDIOTYPE_8_24
+
 /* Module Vol - Single Volume*/
 #define MOD_VOL_COUNT                                  1
 #define MOD_VOL_DEVICE                                 "IC1"
-#define MOD_VOL_GAINALGNS145X1GAIN_ADDR                1751
+#define MOD_VOL_GAINALGNS145X1GAIN_ADDR                1752
 #define MOD_VOL_GAINALGNS145X1GAIN_VALUE               SIGMASTUDIOTYPE_8_24_CONVERT(1)
 #define MOD_VOL_GAINALGNS145X1GAIN_TYPE                SIGMASTUDIOTYPE_8_24
 
