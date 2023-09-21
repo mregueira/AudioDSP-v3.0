@@ -418,8 +418,50 @@
             <Data>0x90, 0x00, </Data>
         </Register>
         <Register>
+            <Name>IC 1.SERIAL_BYTE_1_0</Name>
+            <Address>61956</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
+            <Name>IC 1.SERIAL_BYTE_2_0</Name>
+            <Address>61960</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
+            <Name>IC 1.SERIAL_BYTE_3_0</Name>
+            <Address>61964</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
             <Name>IC 1.SERIAL_BYTE_4_0</Name>
             <Address>61968</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
+            <Name>IC 1.SERIAL_BYTE_5_0</Name>
+            <Address>61972</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
+            <Name>IC 1.SERIAL_BYTE_6_0</Name>
+            <Address>61976</Address>
+            <AddrIncr>0</AddrIncr>
+            <Size>2</Size>
+            <Data>0x90, 0x00, </Data>
+        </Register>
+        <Register>
+            <Name>IC 1.SERIAL_BYTE_7_0</Name>
+            <Address>61980</Address>
             <AddrIncr>0</AddrIncr>
             <Size>2</Size>
             <Data>0x90, 0x00, </Data>

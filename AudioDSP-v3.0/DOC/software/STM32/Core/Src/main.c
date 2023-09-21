@@ -281,7 +281,7 @@ int main(void)
   HAL_Delay(500);
 
   // Configure DAC format to I2S 16-24 bit, slow roll-off
-  auxData[0] = 0b00101000;
+  auxData[0] = 0b00000100;
   auxData[1] = 0x00;
   stat = HAL_I2C_Mem_Write(&hi2c3, DAC_ADDR, 0x09, 1, auxData, 1, 1000);
 
@@ -303,17 +303,17 @@ int main(void)
   HAL_Delay(500);
 
   //Configure ADCs clock settings
-  auxData[0] = 0b01000000;
-  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x20, 1, auxData, 1, 1000);
-
-  auxData[0] = 0b00000001;
-  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
-  stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
-  stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
-
-  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
-  stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
-  stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
+//  auxData[0] = 0b01000000;
+//  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x20, 1, auxData, 1, 1000);
+//
+//  auxData[0] = 0b00000001;
+//  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
+//  stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
+//  stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0D, 1, auxData, 1, 1000);
+//
+//  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
+//  stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
+//  stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
 
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);

@@ -1,7 +1,7 @@
 /*
  * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\STM32\Core\Inc\DSP\DSP_IC_1_PARAM.h
  *
- * Created:        Tuesday, September 19, 2023 11:19:00 PM
+ * Created:        Wednesday, September 20, 2023 7:06:34 PM
  * Description:    DSP:IC 1 parameter RAM definitions.
  *
  * This software is distributed in the hope that it will be useful,
