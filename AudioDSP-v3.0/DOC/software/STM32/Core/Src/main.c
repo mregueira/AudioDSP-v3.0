@@ -72,8 +72,12 @@ uint16_t pote[ADC_POT];  // Potentiometer values 0-29
 uint16_t log_in_table[30];
 uint16_t linear_in_table[30];
 uint16_t flag[ADC_POT];  // Flag for different potentiometers
+uint8_t update = 0;
 
 ADI_REG_TYPE aux[4];
+ADI_REG_TYPE data_SafeLoad[4]; // Per slot
+ADI_REG_TYPE address_SafeLoad[4]; // 2 Bytes per address
+ADI_REG_TYPE num_SafeLoad[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -318,30 +322,8 @@ int main(void)
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
-  HAL_Delay(250);
+  HAL_Delay(500);
 
-//  for(k=0; k<ADC_POT; k++)
-//  {
-//	  pote[k] = 14;
-//	  flag[k] = 1;
-//  }
-//  aux[0] = 0x00;
-//  aux[1] = 0x00;
-//  aux[2] = 0x00;
-//  aux[3] = 0x00;
-//
-//  for(k=0; k<4; k++) // Filters 32Hz - 512Hz
-//  {
-//	  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
-//  }
-//  for(k=6; k<(ADC_POT-3); k++) // Filters 1KHz - 16KHz
-//  {
-//      SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_2, BandAddress[k], 4, aux);
-//  }
-//  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-2], 4, aux); // Subwoofer
-//  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[ADC_POT-1], 4, aux); // Volume
-//
-//  HAL_Delay(250);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -351,71 +333,96 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  aux[0] = 0x00;
-	  aux[1] = 0x00;
-	  aux[2] = 0x00;
+	  data_SafeLoad[2] = 0x00;
+	  data_SafeLoad[1] = 0x00;
+	  data_SafeLoad[0] = 0x00;
 
-	  for(k=0; k<VOL_ARRAY; k++) // Filters 32Hz - 16KHz + Subwoofer
+	  address_SafeLoad[1] = 0x00;
+	  address_SafeLoad[0] = 0x00;
+
+	  num_SafeLoad[3] = 0x01;
+	  num_SafeLoad[2] = 0x00;
+	  num_SafeLoad[1] = 0x00;
+	  num_SafeLoad[0] = 0x00;
+
+	  if(update == 1)
 	  {
-		  if(flag[k] == 1)
+		  for(k=0; k<VOL_ARRAY; k++) // Filters 32Hz - 16KHz + Subwoofer
 		  {
-			  flag[k] = 0;
-			  aux[3] = 29 - pote[k];
-			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[k], 4, aux);
+				  data_SafeLoad[3] = 29 - pote[k];
+				  address_SafeLoad[3] = 0xFF & (BandAddress[k]);
+				  address_SafeLoad[2] = 0xFF & ((BandAddress[k])>>8);
+				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+				  HAL_Delay(1);
 		  }
-	  }
 
-	  aux[0] = 0x00;
-	  aux[1] = 0x00;
-	  aux[2] = 0x00;
-
-	  if(flag[VOL_ARRAY] == 1) // Volume
-	  {
-		  flag[VOL_ARRAY] = 0;
 		  pote_aux = 29 - pote[VOL_ARRAY];
-		  aux[3] = 0xFF & (vol_data[pote_aux]);
-		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
-		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
-		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[VOL_ARRAY], 4, aux);
-	  }
 
-	  if(flag[LOUD_LOW_ARRAY] == 1) // Loudness Low Boost
-	  {
-		  flag[LOUD_LOW_ARRAY] = 0;
+		  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
+		  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  address_SafeLoad[3] = 0xFF & (BandAddress[VOL_ARRAY]);
+		  address_SafeLoad[2] = 0xFF & ((BandAddress[VOL_ARRAY])>>8);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+		  HAL_Delay(1);
+
 		  pote_aux = 29 - pote[LOUD_LOW_ARRAY];
-		  aux[3] = 0xFF & (boost_data[pote_aux]);
-		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
-		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
-		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_LOW_ARRAY], 4, aux);
-	  }
 
-	  if(flag[LOUD_HIGH_ARRAY] == 1) // Loudness High Boost
-	  {
-		  flag[LOUD_HIGH_ARRAY] = 0;
+		  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
+		  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_LOW_ARRAY]);
+		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_LOW_ARRAY])>>8);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+		  HAL_Delay(1);
+
 		  pote_aux = 29 - pote[LOUD_HIGH_ARRAY];
-		  aux[3] = 0xFF & (boost_data[pote_aux]);
-		  aux[2] = 0xFF & ((boost_data[pote_aux])>>8);
-		  aux[1] = 0xFF & ((boost_data[pote_aux])>>16);
-		  aux[0] = 0xFF & ((boost_data[pote_aux])>>24);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_HIGH_ARRAY], 4, aux);
-	  }
 
-	  if(flag[LOUD_GRL_ARRAY] == 1) // Loudness
-	  {
-		  flag[LOUD_GRL_ARRAY] = 0;
+		  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
+		  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
+		  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
+		  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
+		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_HIGH_ARRAY]);
+		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_HIGH_ARRAY])>>8);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+		  HAL_Delay(1);
+
 		  pote_aux = pote[LOUD_GRL_ARRAY];
-		  aux[3] = 0xFF & (vol_data[pote_aux]);
-		  aux[2] = 0xFF & ((vol_data[pote_aux])>>8);
-		  aux[1] = 0xFF & ((vol_data[pote_aux])>>16);
-		  aux[0] = 0xFF & ((vol_data[pote_aux])>>24);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, BandAddress[LOUD_GRL_ARRAY], 4, aux);
-		  aux[3] = 0xFF & (comp_data[pote_aux]);
-		  aux[2] = 0xFF & ((comp_data[pote_aux])>>8);
-		  aux[1] = 0xFF & ((comp_data[pote_aux])>>16);
-		  aux[0] = 0xFF & ((comp_data[pote_aux])>>24);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR, 4, aux);
+
+		  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
+		  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
+		  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
+		  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
+		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_GRL_ARRAY]);
+		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_GRL_ARRAY])>>8);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+		  HAL_Delay(1);
+
+		  data_SafeLoad[3] = 0xFF & (comp_data[pote_aux]);
+		  data_SafeLoad[2] = 0xFF & ((comp_data[pote_aux])>>8);
+		  data_SafeLoad[1] = 0xFF & ((comp_data[pote_aux])>>16);
+		  data_SafeLoad[0] = 0xFF & ((comp_data[pote_aux])>>24);
+		  address_SafeLoad[3] = 0xFF & (MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR);
+		  address_SafeLoad[2] = 0xFF & ((MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR)>>8);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+		  HAL_Delay(1);
+
+		  update = 0;
+		  HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 	  }
 
   }
@@ -863,15 +870,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[k] != i)
 				{
 					pote[k] = i;
-					flag[k] = 1;
 				}
 			}
-			else if((i > 0) && (i < 29 ) && (value[k] > (linear_in_table[i]+15)) && (value[k] < (linear_in_table[i+1])-15))
+			else if((i > 0) && (i < 29) && (value[k] > (linear_in_table[i]+15)) && (value[k] < (linear_in_table[i+1])-15))
 			{
 				if(pote[k] != i)
 				{
 					pote[k] = i;
-					flag[k] = 1;
 				}
 			}
 			else if((i == 29) && (value[k] > (linear_in_table[i]+15)))
@@ -879,7 +884,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[k] != i)
 				{
 					pote[k] = i;
-					flag[k] = 1;
 				}
 			}
 		}
@@ -895,15 +899,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[j] != i)
 				{
 					pote[j] = i;
-					flag[j] = 1;
 				}
 			}
-			else if((i > 0) && (i < 29 ) && (value[j] > (log_in_table[i]+15)) && (value[j] < (log_in_table[i+1])-15))
+			else if((i > 0) && (i < 29) && (value[j] > (log_in_table[i]+15)) && (value[j] < (log_in_table[i+1])-15))
 			{
 				if(pote[j] != i)
 				{
 					pote[j] = i;
-					flag[j] = 1;
 				}
 			}
 			else if((i == 29) && (value[j] > (log_in_table[i]+15)))
@@ -911,13 +913,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[j] != i)
 				{
 					pote[j] = i;
-					flag[j] = 1;
 				}
 			}
 		}
 
 	}
-	HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
+
+	update = 1;
 }
 /* USER CODE END 4 */
 
