@@ -61,6 +61,7 @@ I2C_HandleTypeDef hi2c2;
 I2C_HandleTypeDef hi2c3;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
 HAL_StatusTypeDef stat;
@@ -89,8 +90,10 @@ static void MX_I2C3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
+void delay_us(uint16_t us);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -262,8 +265,9 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   MX_TIM2_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start(&htim4);
   // Disable DSP
   HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_RESET);
 
@@ -301,11 +305,10 @@ int main(void)
   // Enable DSP
   HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
 
-  HAL_Delay(500);
+  HAL_Delay(100);
 
   default_download_IC_1();
   HAL_Delay(500);
-
   //Configure ADCs clock settings
 //  auxData[0] = 0b01000000;
 //  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x20, 1, auxData, 1, 1000);
@@ -319,10 +322,15 @@ int main(void)
 //  stat = HAL_I2C_Mem_Write(&hi2c2, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
 //  stat = HAL_I2C_Mem_Write(&hi2c3, ADC_ADDR, 0x0E, 1, auxData, 1, 1000);
 
+  for(k=0; k<ADC_POT; k++)
+  {
+	  flag[k] = 1;
+  }
+
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
 
-  HAL_Delay(500);
+  HAL_Delay(3000);
 
   /* USER CODE END 2 */
 
@@ -341,7 +349,7 @@ int main(void)
 	  address_SafeLoad[0] = 0x00;
 
 	  num_SafeLoad[3] = 0x01;
-	  num_SafeLoad[2] = 0x00;
+ 	  num_SafeLoad[2] = 0x00;
 	  num_SafeLoad[1] = 0x00;
 	  num_SafeLoad[0] = 0x00;
 
@@ -349,77 +357,98 @@ int main(void)
 	  {
 		  for(k=0; k<VOL_ARRAY; k++) // Filters 32Hz - 16KHz + Subwoofer
 		  {
+			  if(flag[k] == 1)
+			  {
+				  flag[k] = 0;
 				  data_SafeLoad[3] = 29 - pote[k];
 				  address_SafeLoad[3] = 0xFF & (BandAddress[k]);
 				  address_SafeLoad[2] = 0xFF & ((BandAddress[k])>>8);
 				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
 				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
 				  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-				  HAL_Delay(1);
+				  delay_us(100);
+			  }
+
 		  }
 
-		  pote_aux = 29 - pote[VOL_ARRAY];
+		  if(flag[VOL_ARRAY] == 1)
+		  {
+			  flag[VOL_ARRAY] = 0;
+			  pote_aux = 29 - pote[VOL_ARRAY];
 
-		  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
-		  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
-		  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
-		  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
-		  address_SafeLoad[3] = 0xFF & (BandAddress[VOL_ARRAY]);
-		  address_SafeLoad[2] = 0xFF & ((BandAddress[VOL_ARRAY])>>8);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-		  HAL_Delay(1);
+			  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
+			  address_SafeLoad[3] = 0xFF & (BandAddress[VOL_ARRAY]);
+			  address_SafeLoad[2] = 0xFF & ((BandAddress[VOL_ARRAY])>>8);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+			  delay_us(100);
+		  }
 
-		  pote_aux = 29 - pote[LOUD_LOW_ARRAY];
+		  if(flag[LOUD_LOW_ARRAY] == 1)
+		  {
+			  flag[LOUD_LOW_ARRAY] = 0;
+			  pote_aux = 29 - pote[LOUD_LOW_ARRAY];
 
-		  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
-		  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
-		  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
-		  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
-		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_LOW_ARRAY]);
-		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_LOW_ARRAY])>>8);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-		  HAL_Delay(1);
+			  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
+			  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_LOW_ARRAY]);
+			  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_LOW_ARRAY])>>8);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+			  delay_us(100);
+		  }
 
-		  pote_aux = 29 - pote[LOUD_HIGH_ARRAY];
+		  if(flag[LOUD_HIGH_ARRAY] == 1)
+		  {
+			  flag[LOUD_HIGH_ARRAY] = 0;
+			  pote_aux = 29 - pote[LOUD_HIGH_ARRAY];
 
-		  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
-		  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
-		  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
-		  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
-		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_HIGH_ARRAY]);
-		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_HIGH_ARRAY])>>8);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-		  HAL_Delay(1);
+			  data_SafeLoad[3] = 0xFF & (boost_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((boost_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((boost_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((boost_data[pote_aux])>>24);
+			  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_HIGH_ARRAY]);
+			  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_HIGH_ARRAY])>>8);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+			  delay_us(100);
+		  }
 
-		  pote_aux = pote[LOUD_GRL_ARRAY];
+		  if(flag[LOUD_GRL_ARRAY] == 1)
+		  {
+			  flag[LOUD_GRL_ARRAY] = 0;
+			  pote_aux = pote[LOUD_GRL_ARRAY];
 
-		  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
-		  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
-		  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
-		  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
-		  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_GRL_ARRAY]);
-		  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_GRL_ARRAY])>>8);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-		  HAL_Delay(1);
+			  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
+			  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_GRL_ARRAY]);
+			  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_GRL_ARRAY])>>8);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+			  delay_us(100);
 
-		  data_SafeLoad[3] = 0xFF & (comp_data[pote_aux]);
-		  data_SafeLoad[2] = 0xFF & ((comp_data[pote_aux])>>8);
-		  data_SafeLoad[1] = 0xFF & ((comp_data[pote_aux])>>16);
-		  data_SafeLoad[0] = 0xFF & ((comp_data[pote_aux])>>24);
-		  address_SafeLoad[3] = 0xFF & (MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR);
-		  address_SafeLoad[2] = 0xFF & ((MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR)>>8);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
-		  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
-		  HAL_Delay(1);
+			  data_SafeLoad[3] = 0xFF & (comp_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((comp_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((comp_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((comp_data[pote_aux])>>24);
+			  address_SafeLoad[3] = 0xFF & (MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR);
+			  address_SafeLoad[2] = 0xFF & ((MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR)>>8);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_ADDRESS_SAFELOAD_ADDR, 4, address_SafeLoad);
+			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_NUM_SAFELOAD_ADDR, 4, num_SafeLoad);
+			  delay_us(100);
+		  }
 
 		  update = 0;
 		  HAL_ADC_Start_DMA(&hadc1, value, ADC_POT);
@@ -511,7 +540,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = 1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+  sConfig.SamplingTime = ADC_SAMPLETIME_84CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -757,7 +786,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 8000;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 1000-1;
+  htim2.Init.Period = 500-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -778,6 +807,51 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
+  * @brief TIM4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 80 - 1;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 123;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
 
 }
 
@@ -821,6 +895,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, CSEL_Pin|SR_Pin|FS2_Pin|FS1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIO0_GPIO_Port, GPIO0_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pins : nRST_DSP_Pin EN_SCK_Pin */
   GPIO_InitStruct.Pin = nRST_DSP_Pin|EN_SCK_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
@@ -835,11 +912,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : GPIO0_Pin GPIO1_Pin */
-  GPIO_InitStruct.Pin = GPIO0_Pin|GPIO1_Pin;
+  /*Configure GPIO pin : GPIO0_Pin */
+  GPIO_InitStruct.Pin = GPIO0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIO0_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : GPIO1_Pin */
+  GPIO_InitStruct.Pin = GPIO1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIO1_GPIO_Port, &GPIO_InitStruct);
 
 }
 
@@ -870,6 +954,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[k] != i)
 				{
 					pote[k] = i;
+					flag[k] = 1;
 				}
 			}
 			else if((i > 0) && (i < 29) && (value[k] > (linear_in_table[i]+15)) && (value[k] < (linear_in_table[i+1])-15))
@@ -877,6 +962,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[k] != i)
 				{
 					pote[k] = i;
+					flag[k] = 1;
 				}
 			}
 			else if((i == 29) && (value[k] > (linear_in_table[i]+15)))
@@ -884,6 +970,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[k] != i)
 				{
 					pote[k] = i;
+					flag[k] = 1;
 				}
 			}
 		}
@@ -899,6 +986,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[j] != i)
 				{
 					pote[j] = i;
+					flag[j] = 1;
 				}
 			}
 			else if((i > 0) && (i < 29) && (value[j] > (log_in_table[i]+15)) && (value[j] < (log_in_table[i+1])-15))
@@ -906,6 +994,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[j] != i)
 				{
 					pote[j] = i;
+					flag[j] = 1;
 				}
 			}
 			else if((i == 29) && (value[j] > (log_in_table[i]+15)))
@@ -913,6 +1002,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				if(pote[j] != i)
 				{
 					pote[j] = i;
+					flag[j] = 1;
 				}
 			}
 		}
@@ -921,6 +1011,13 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 
 	update = 1;
 }
+
+void delay_us(uint16_t us)
+{
+	htim4.Instance->CNT = 0;
+	while((htim4.Instance->CNT) < us);
+}
+
 /* USER CODE END 4 */
 
 /**
