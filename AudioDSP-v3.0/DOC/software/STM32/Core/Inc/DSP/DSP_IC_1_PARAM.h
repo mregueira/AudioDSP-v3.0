@@ -1,7 +1,7 @@
 /*
  * File:           C:\Users\marce\OneDrive\Desktop\GitHub Repos\AudioDSP-v3.0\AudioDSP-v3.0\DOC\software\STM32\Core\Inc\DSP\DSP_IC_1_PARAM.h
  *
- * Created:        Wednesday, September 20, 2023 7:06:34 PM
+ * Created:        Monday, September 25, 2023 8:01:40 PM
  * Description:    DSP:IC 1 parameter RAM definitions.
  *
  * This software is distributed in the hope that it will be useful,
@@ -5207,18 +5207,18 @@
 #define MOD_LOUD_SEL_DCINPALG145X12VALUE_VALUE         SIGMASTUDIOTYPE_8_24_CONVERT(1)
 #define MOD_LOUD_SEL_DCINPALG145X12VALUE_TYPE          SIGMASTUDIOTYPE_8_24
 
-/* Module LoudComp - Gain*/
-#define MOD_LOUDCOMP_COUNT                             1
-#define MOD_LOUDCOMP_DEVICE                            "IC1"
-#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR           1751
-#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_VALUE          SIGMASTUDIOTYPE_8_24_CONVERT(1)
-#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_TYPE           SIGMASTUDIOTYPE_8_24
-
 /* Module Vol - Single Volume*/
 #define MOD_VOL_COUNT                                  1
 #define MOD_VOL_DEVICE                                 "IC1"
-#define MOD_VOL_GAINALGNS145X1GAIN_ADDR                1752
+#define MOD_VOL_GAINALGNS145X1GAIN_ADDR                1751
 #define MOD_VOL_GAINALGNS145X1GAIN_VALUE               SIGMASTUDIOTYPE_8_24_CONVERT(1)
 #define MOD_VOL_GAINALGNS145X1GAIN_TYPE                SIGMASTUDIOTYPE_8_24
+
+/* Module LoudComp - Gain*/
+#define MOD_LOUDCOMP_COUNT                             1
+#define MOD_LOUDCOMP_DEVICE                            "IC1"
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR           1752
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_VALUE          SIGMASTUDIOTYPE_8_24_CONVERT(1)
+#define MOD_LOUDCOMP_GAINALGNS145X2GAIN_TYPE           SIGMASTUDIOTYPE_8_24
 
 #endif

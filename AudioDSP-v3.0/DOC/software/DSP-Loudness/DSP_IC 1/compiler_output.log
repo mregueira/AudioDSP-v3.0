@@ -1,11 +1,11 @@
 ADAU145X Assembler, Analog Devices Inc.
 Version: 4.7.0,1827  (built 4/5/2022)
 
-##### Compile Started: Thursday, September 21, 2023 10:08:10 PM #####
+##### Compile Started: Monday, September 25, 2023 8:01:33 PM #####
 ADAU145X Assembler, Analog Devices Inc.
 Version: 4.7.0,1827  (built 4/5/2022)
 
-##### Compile Started: Thursday, September 21, 2023 10:08:10 PM #####
+##### Compile Started: Monday, September 25, 2023 8:01:33 PM #####
 ##### Compile succeeded:  0 errors, 0 warnings #####
 
 ##### Summary #####
@@ -33,28 +33,28 @@ Band32                        83        130       158     47      0
 Loud                          78        115       11      25      0
 BandSub                       43        62        158     12      0
 FRAMEWORK                     52        33        4       7       0
-LoudComp                      15        15        1       5       0
-Vol                           15        15        1       0       0
+Vol                           15        15        1       5       0
+LoudComp                      15        15        1       0       0
 Input1                        4         4         0       2       0
 Input2                        4         4         0       2       0
 Input3                        4         4         0       1       0
-Band16k-Sel                   2         3         1       1       0
-Band4k-Sel                    2         3         1       1       0
 Band8k-Sel                    2         3         1       1       0
+Band4k-Sel                    2         3         1       1       0
+Band16k-Sel                   2         3         1       1       0
+Output2                       2         3         0       0       0
 Output1                       2         3         0       0       0
+Output3                       2         3         0       0       0
 Output4                       2         3         0       0       0
 Output5                       2         3         0       0       0
-Output2                       2         3         0       0       0
-Output3                       2         3         0       0       0
-Band128-Sel                   2         2         1       1       0
-Band64-Sel                    2         2         1       1       0
 Band32-Sel                    2         2         1       1       0
+Band256-Sel                   2         2         1       1       0
+Band128-Sel                   2         2         1       1       0
+Band512-Sel                   2         2         1       1       0
 Band1k-Sel                    2         2         1       1       0
 Band2k-Sel                    2         2         1       1       0
 Loud-Sel                      2         2         1       1       0
+Band64-Sel                    2         2         1       1       0
 BandSub-Sel                   2         2         1       1       0
-Band512-Sel                   2         2         1       1       0
-Band256-Sel                   2         2         1       1       0
 Output6                       2         2         0       0       0
 --------------------------------------------------------------------------------------
 Total                         1081      1637      1783    541     0

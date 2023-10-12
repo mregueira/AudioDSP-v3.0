@@ -1698,7 +1698,7 @@ int main(void)
  800134e:	f240 63d2 	movw	r3, #1746	; 0x6d2
  8001352:	f8a7 3180 	strh.w	r3, [r7, #384]	; 0x180
 	  BandAddress[VOL_ARRAY] = MOD_VOL_GAINALGNS145X1GAIN_ADDR;
- 8001356:	f44f 63db 	mov.w	r3, #1752	; 0x6d8
+ 8001356:	f240 63d7 	movw	r3, #1751	; 0x6d7
  800135a:	f8a7 3182 	strh.w	r3, [r7, #386]	; 0x182
 	  BandAddress[LOUD_LOW_ARRAY] = MOD_LOUD_ALG0_LEVEL0_ADDR;
  800135e:	23b5      	movs	r3, #181	; 0xb5
@@ -3017,7 +3017,7 @@ int main(void)
  8001f1e:	701a      	strb	r2, [r3, #0]
 			  address_SafeLoad[3] = 0xFF & (MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR);
  8001f20:	4b14      	ldr	r3, [pc, #80]	; (8001f74 <main+0xc88>)
- 8001f22:	22d7      	movs	r2, #215	; 0xd7
+ 8001f22:	22d8      	movs	r2, #216	; 0xd8
  8001f24:	70da      	strb	r2, [r3, #3]
 			  address_SafeLoad[2] = 0xFF & ((MOD_LOUDCOMP_GAINALGNS145X2GAIN_ADDR)>>8);
  8001f26:	4b13      	ldr	r3, [pc, #76]	; (8001f74 <main+0xc88>)

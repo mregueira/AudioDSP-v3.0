@@ -1709,8 +1709,8 @@ DCInpAlg145X12.value	1747
 ParamToneIndexwStepS300Alg11.indexA	1748
 ParamToneIndexwStepS300Alg11.indexB	1749
 ParamToneIndexwStepS300Alg11.next	1750
-GainAlgNS145X2.gain	1751
-GainAlgNS145X1.gain	1752
+GainAlgNS145X1.gain	1751
+GainAlgNS145X2.gain	1752
 ParamToneIndexwStepS300Alg1.indexA	1753
 ParamToneIndexwStepS300Alg1.indexB	1754
 ParamToneIndexwStepS300Alg1.next	1755
