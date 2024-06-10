@@ -1,0 +1,5 @@
+<?xml version="1.0" standalone="no"?>
+<ROM IC="ADAU1452" IC_Address="112" Address_byte_length="2" Protocol="SPI" Speed="10000" Mode="1" Page_Size="256" Memory_Size="1048576" EE_Address_Bytes="3" Read_Instruction="3">
+  <dateTime>2024-02-07T00:13:12.4579179Z</dateTime>
+  <GPIO />
+</ROM>

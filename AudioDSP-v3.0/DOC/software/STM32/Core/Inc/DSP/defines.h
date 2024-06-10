@@ -1,7 +1,7 @@
 /*
  * File:           defines.h
  *
- * Created:        Monday, September 25, 2023 8:01:40 PM
+ * Created:        Sunday, June 9, 2024 9:05:20 PM
  * Description:    DSP IC default download data definitions.
  *
  * This software is distributed in the hope that it will be useful,
@@ -14,12 +14,12 @@
  * are intended for resale to audio product end users. This software
  * may not be distributed whole or in any part to third parties.
  *
- * Copyright ©2023 Analog Devices, Inc. All rights reserved.
+ * Copyright ©2024 Analog Devices, Inc. All rights reserved.
  */
 #ifndef __DEFINES_H__
 #define __DEFINES_H__
 
-#define BufferSize_IC_1     	16334
+#define BufferSize_IC_1     	39282
 #define NumTransactions_IC_1	71
 
 

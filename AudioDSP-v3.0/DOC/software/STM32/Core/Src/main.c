@@ -112,6 +112,7 @@ int main(void)
 	  uint16_t pote_aux = 0;
 	  uint16_t BandAddress[ADC_POT]; // Addresses of filters
 	  uint32_t vol_data[30]; // Fixed volume values
+	  uint32_t loud_data[30]; // Fixed loudness values
 	  uint32_t boost_data[30]; // Fixed boost loudness values
 	  uint32_t comp_data[30]; // Fixed compensation values
 
@@ -131,69 +132,101 @@ int main(void)
 	  BandAddress[LOUD_HIGH_ARRAY] = MOD_LOUD_ALG0_LEVEL1_ADDR;
 	  BandAddress[LOUD_GRL_ARRAY] = MOD_LOUD_SEL_DCINPALG145X12VALUE_ADDR;
 
-	  // 8.24 FixPoint
+	  // 8.24 FixPoint Volume
 	  vol_data[29] = 0x01000000; // 0dB
-	  vol_data[28] = 0x00e42904; // -1dB
-	  vol_data[27] = 0x00cb5918; // -2dB
-	  vol_data[26] = 0x00b53bee; // -3dB
-	  vol_data[25] = 0x00a1866a; // -4dB
-	  vol_data[24] = 0x008ff598; // -5dB
-	  vol_data[23] = 0x00804dce; // -6dB
-	  vol_data[22] = 0x006fbf80; // -7dB (-7.2dB)
-	  vol_data[21] = 0x0065ea58; // -8dB
-	  vol_data[20] = 0x005ad50c; // -9dB
-	  vol_data[19] = 0x0050f44c; // -10dB
-	  vol_data[18] = 0x0048268c; // -11dB
-	  vol_data[17] = 0x00404de6; // -12dB
-	  vol_data[16] = 0x00394fae; // -13dB
-	  vol_data[15] = 0x00331426; // -14dB
-	  vol_data[14] = 0x002d8620; // -15dB
-	  vol_data[13] = 0x002892c0; // -16dB
-	  vol_data[12] = 0x00242934; // -17dB
-	  vol_data[11] = 0x00203a7e; // -18dB
-	  vol_data[10] = 0x001cb942; // -19dB
-	  vol_data[9] = 0x00199998; // -20dB
-	  vol_data[8] = 0x0016d0e6; // -21dB
-	  vol_data[7] = 0x001455b4; // -22dB
-	  vol_data[6] = 0x00121f96; // -23dB
-	  vol_data[5] = 0x0010270a; // -24dB
-	  vol_data[4] = 0x000e655c; // -25dB
-	  vol_data[3] = 0x000cd494; // -26dB
-	  vol_data[2] = 0x000b6f62; // -27dB
-	  vol_data[1] = 0x000a3108; // -28dB
-	  vol_data[0] = 0x0009154e; // -29dB
+	  vol_data[28] = 0x00CB5918; // -2dB
+	  vol_data[27] = 0x00A1866C; // -4dB
+	  vol_data[26] = 0x00804DCE; // -6dB
+	  vol_data[25] = 0x0065EA5A; // -8dB
+	  vol_data[24] = 0x0050F44E; // -10dB
+	  vol_data[23] = 0x00404DE6; // -12dB
+	  vol_data[22] = 0x00331427; // -14dB (-7.2dB)
+	  vol_data[21] = 0x002892C2; // -16dB
+	  vol_data[20] = 0x00203A7E; // -18dB
+	  vol_data[19] = 0x0019999A; // -20dB
+	  vol_data[18] = 0x001455B6; // -22dB
+	  vol_data[17] = 0x0010270B; // -24dB
+	  vol_data[16] = 0x000CD495; // -26dB
+	  vol_data[15] = 0x000A3109; // -28dB
+	  vol_data[14] = 0x0008186E; // -30dB
+	  vol_data[13] = 0x00066E31; // -32dB
+	  vol_data[12] = 0x00051B9D; // -34dB
+	  vol_data[11] = 0x00040EAD; // -36dB
+	  vol_data[10] = 0x0003390D; // -38dB
+	  vol_data[9] = 0x00028F5C; // -40dB
+	  vol_data[8] = 0x00020892; // -42dB
+	  vol_data[7] = 0x00019D81; // -44dB
+	  vol_data[6] = 0x00014875; // -46dB
+	  vol_data[5] = 0x000104E7; // -48dB
+	  vol_data[4] = 0x0000CF3E; // -50dB
+	  vol_data[3] = 0x0000A49E; // -52dB
+	  vol_data[2] = 0x000082C3; // -54dB
+	  vol_data[1] = 0x000067DE; // -56dB
+	  vol_data[0] = 0x00005281; // -58dB
+
+	  // 8.24 FixPoint Loudness
+	  loud_data[29] = 0x01000000; // 0dB
+	  loud_data[28] = 0x00F1ADF9; // -0.5dB
+	  loud_data[27] = 0x00E42905; // -1dB
+	  loud_data[26] = 0x00D765AC; // -1.5dB
+	  loud_data[25] = 0x00CB5918; // -2dB
+	  loud_data[24] = 0x00BFF911; // -2.5dB
+	  loud_data[23] = 0x00B53BEF; // -3dB
+	  loud_data[22] = 0x00AB1896; // -3.5dB
+	  loud_data[21] = 0x00A1866C; // -4dB
+	  loud_data[20] = 0x00987D50; // -4.5dB
+	  loud_data[19] = 0x008FF59A; // -5dB
+	  loud_data[18] = 0x0087E80B; // -5.5dB
+	  loud_data[17] = 0x00804DCE; // -6dB
+	  loud_data[16] = 0x00792071; // -6.5dB
+	  loud_data[15] = 0x007259DB; // -7dB
+	  loud_data[14] = 0x006BF44D; // -7.5dB
+	  loud_data[13] = 0x0065EA5A; // -8dB
+	  loud_data[12] = 0x006036E1; // -8.5dB
+	  loud_data[11] = 0x005AD50D; // -9dB
+	  loud_data[10] = 0x0055C04C; // -9.5dB
+	  loud_data[9] = 0x0050F44E; // -10dB
+	  loud_data[8] = 0x004C6D01; // -10.5dB
+	  loud_data[7] = 0x0048268E; // -11dB
+	  loud_data[6] = 0x00441D54; // -11.5dB
+	  loud_data[5] = 0x00404DE6; // -12dB
+	  loud_data[4] = 0x003CB509; // -12.5dB
+	  loud_data[3] = 0x00394FAF; // -13dB
+	  loud_data[2] = 0x00361AF6; // -13.5dB
+	  loud_data[1] = 0x00331427; // -14dB
+	  loud_data[0] = 0x003038AF; // -14.5dB
 
 	  // 8.24 Compensation FixPoint
 	  comp_data[29] = 0x01000000; // 0dB
-	  comp_data[28] = 0x011F3B64; // +1dB
-	  comp_data[27] = 0x014248E8; // +2dB
-	  comp_data[26] = 0x01699C0F; // +3dB
-	  comp_data[25] = 0x0195BB8C; // +4dB
-	  comp_data[24] = 0x01C73D51; // +5dB
-	  comp_data[23] = 0x02000000; // +6dB
-	  comp_data[22] = 0x023D1CD1; // +7dB
-	  comp_data[21] = 0x02830AFD; // +8dB
-	  comp_data[20] = 0x02D1818B; // +9dB
-	  comp_data[19] = 0x03298B07; // +10dB
-	  comp_data[18] = 0x038C5280; // +11dB
-	  comp_data[17] = 0x03FB2783; // +12dB
-	  comp_data[16] = 0x0477828F; // +13dB
-	  comp_data[15] = 0x05030A10; // +14dB
-	  comp_data[14] = 0x059F9802; // +15dB
-	  comp_data[13] = 0x064F4034; // +16dB
-	  comp_data[12] = 0x07145759; // +17dB
-	  comp_data[11] = 0x07F17AF3; // +18dB
-	  comp_data[10] = 0x08E99A36; // +19dB
-	  comp_data[9] = 0x0A000000; // +20dB
-	  comp_data[8] = 0x0B385E03; // +21dB
-	  comp_data[7] = 0x0C96D95B; // +22dB
-	  comp_data[6] = 0x0E20189B; // +23dB
-	  comp_data[5] = 0x0FD9539A; // +24dB
-	  comp_data[4] = 0x11C86531; // +25dB
-	  comp_data[3] = 0x13F3DF1C; // +26dB
-	  comp_data[2] = 0x16632049; // +27dB
-	  comp_data[1] = 0x191E6DE4; // +28dB
-	  comp_data[0] = 0x1C2F0F70; // +29dB
+	  comp_data[28] = 0x010F2B41; // +0.5dB
+	  comp_data[27] = 0x011F3C9A; // +1dB
+	  comp_data[26] = 0x013041AF; // +1.5dB
+	  comp_data[25] = 0x014248F0; // +2dB
+	  comp_data[24] = 0x015561A9; // +2.5dB
+	  comp_data[23] = 0x01699C0F; // +3dB
+	  comp_data[22] = 0x017F094D; // +3.5dB
+	  comp_data[21] = 0x0195BB8F; // +4dB
+	  comp_data[20] = 0x01ADC61A; // +4.5dB
+	  comp_data[19] = 0x01C73D52; // +5dB
+	  comp_data[18] = 0x01E236D4; // +5.5dB
+	  comp_data[17] = 0x01FEC983; // +6dB
+	  comp_data[16] = 0x021D0D9E; // +6.5dB
+	  comp_data[15] = 0x023D1CD4; // +7dB
+	  comp_data[14] = 0x025F1259; // +7.5dB
+	  comp_data[13] = 0x02830AFD; // +8dB
+	  comp_data[12] = 0x02A92547; // +8.5dB
+	  comp_data[11] = 0x02D1818B; // +9dB
+	  comp_data[10] = 0x02FC4209; // +9.5dB
+	  comp_data[9] = 0x03298B07; // +10dB
+	  comp_data[8] = 0x035982F3; // +10.5dB
+	  comp_data[7] = 0x038C5281; // +11dB
+	  comp_data[6] = 0x03C224CD; // +11.5dB
+	  comp_data[5] = 0x03FB2784; // +12dB
+	  comp_data[4] = 0x04378B05; // +12.5dB
+	  comp_data[3] = 0x0477828F; // +13dB
+	  comp_data[2] = 0x04BB4469; // +13.5dB
+	  comp_data[1] = 0x05030A11; // +14dB
+	  comp_data[0] = 0x054F106E; // +14.5dB
 
 	  // 8.24 FixPoint
 	  boost_data[29] = 0x02800000; // 2.50
@@ -288,6 +321,14 @@ int main(void)
 
   HAL_Delay(500);
 
+  // Enable DSP
+  HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
+
+  HAL_Delay(100);
+
+  default_download_IC_1();
+  HAL_Delay(500);
+
   // Configure DAC format to I2S 16-24 bit, slow roll-off
   auxData[0] = 0b00000100;
   auxData[1] = 0x00;
@@ -301,14 +342,6 @@ int main(void)
   auxData[0] = 0b10000000;
   auxData[1] = 0x00;
   stat = HAL_I2C_Mem_Write(&hi2c3, DAC_ADDR, 0x0C, 1, auxData, 1, 1000);
-
-  // Enable DSP
-  HAL_GPIO_WritePin(nRST_DSP_GPIO_Port, nRST_DSP_Pin, GPIO_PIN_SET);
-
-  HAL_Delay(100);
-
-  default_download_IC_1();
-  HAL_Delay(500);
   //Configure ADCs clock settings
 //  auxData[0] = 0b01000000;
 //  stat = HAL_I2C_Mem_Write(&hi2c1, ADC_ADDR, 0x20, 1, auxData, 1, 1000);
@@ -427,10 +460,10 @@ int main(void)
 			  flag[LOUD_GRL_ARRAY] = 0;
 			  pote_aux = pote[LOUD_GRL_ARRAY];
 
-			  data_SafeLoad[3] = 0xFF & (vol_data[pote_aux]);
-			  data_SafeLoad[2] = 0xFF & ((vol_data[pote_aux])>>8);
-			  data_SafeLoad[1] = 0xFF & ((vol_data[pote_aux])>>16);
-			  data_SafeLoad[0] = 0xFF & ((vol_data[pote_aux])>>24);
+			  data_SafeLoad[3] = 0xFF & (loud_data[pote_aux]);
+			  data_SafeLoad[2] = 0xFF & ((loud_data[pote_aux])>>8);
+			  data_SafeLoad[1] = 0xFF & ((loud_data[pote_aux])>>16);
+			  data_SafeLoad[0] = 0xFF & ((loud_data[pote_aux])>>24);
 			  address_SafeLoad[3] = 0xFF & (BandAddress[LOUD_GRL_ARRAY]);
 			  address_SafeLoad[2] = 0xFF & ((BandAddress[LOUD_GRL_ARRAY])>>8);
 			  SIGMA_WRITE_REGISTER_BLOCK(DEVICE_ADDR_IC_1, MOD_SAFELOADMODULE_DATA_SAFELOAD0_ADDR, 4, data_SafeLoad);
